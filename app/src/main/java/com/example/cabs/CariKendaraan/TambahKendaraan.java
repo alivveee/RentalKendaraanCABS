@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.example.cabs.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,6 +22,7 @@ public class TambahKendaraan extends AppCompatActivity {
             , etJumlahPenumpang, etJumlahKendaraan, etDeskripsi;
     Button btTambah;
     DatabaseReference database;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class TambahKendaraan extends AppCompatActivity {
         btTambah = findViewById(R.id.bt_addKendaraan);
 
         database = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         btTambah.setOnClickListener(view -> {
             String namaKendaraan =  etNamaKendaraan.getText().toString();
@@ -52,7 +56,7 @@ public class TambahKendaraan extends AppCompatActivity {
              } else if (tarifKendaraan.isEmpty()) {
                  etTarifKendaraan.setError("Masukkan tarif kendaraan");
              }else {
-                 database.child("Kendaraan").push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
+                 database.child(user.getUid()).child("Kendaraan").push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
                      @Override
                      public void onSuccess(Void unused) {
                          Toast.makeText(TambahKendaraan.this, "data berhasil disimpan", Toast.LENGTH_SHORT).show();
