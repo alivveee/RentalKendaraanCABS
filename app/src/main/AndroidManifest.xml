@@ -31,8 +31,7 @@
             android:exported="false" />
         <activity
             android:name=".TemukanKendaraanActivity"
-            android:exported="false" />
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
