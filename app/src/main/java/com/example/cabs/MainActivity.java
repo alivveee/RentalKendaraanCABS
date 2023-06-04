@@ -17,6 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.ktx.Firebase;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText editText_email,editText_password;
@@ -50,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 password = String.valueOf(editText_password.getText());
 
                 if(TextUtils.isEmpty(email)) {
-                    Toast.makeText(MainActivity.this, "Please Enter Your Email", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(MainActivity.this, "Please Enter Your Email", R.style.mytoast).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)) {
-                    Toast.makeText(MainActivity.this, "Please Enter Your Password", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(MainActivity.this, "Please Enter Your Password", R.style.mytoast).show();
                     return;
                 }
 
@@ -64,13 +66,13 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()) {
-                                    Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(MainActivity.this, "Login Successfull", R.style.mytoast).show();
                                     Intent intent = new Intent(MainActivity.this,HomepageActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
                                 else {
-                                    Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(MainActivity.this, "Login Failed", R.style.mytoast).show();
 
                                 }
                             }

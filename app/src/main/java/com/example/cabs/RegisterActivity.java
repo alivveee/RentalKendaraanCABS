@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.ktx.Firebase;
 
+import io.github.muddz.styleabletoast.StyleableToast;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -36,7 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         bt_continue = findViewById(R.id.bt_continueSignUp);
         editText_nama = findViewById(R.id.et_namaSignUp);
 
-
         bt_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,14 +50,21 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(email)) {
-                    Toast.makeText(RegisterActivity.this, "Please Enter Your Email", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(RegisterActivity.this, "Please Enter Your Email", R.style.mytoast).show();
+                    return;
+                }
+
+                if(TextUtils.isEmpty(nama)) {
+                    StyleableToast.makeText(RegisterActivity.this, "Please Enter Your Name", R.style.mytoast).show();
                     return;
                 }
 
                 if(TextUtils.isEmpty(password)) {
-                    Toast.makeText(RegisterActivity.this, "Please Enter Your Password", Toast.LENGTH_SHORT).show();
+                    StyleableToast.makeText(RegisterActivity.this, "Please Enter Your Password", R.style.mytoast).show();
                     return;
                 }
+
+
 
                 firebaseauth.createUserWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -66,13 +74,13 @@ public class RegisterActivity extends AppCompatActivity {
                                     FirebaseUser user = firebaseauth.getCurrentUser();
                                     UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(nama).build();
                                     user.updateProfile(request);
-                                    Toast.makeText(RegisterActivity.this, "Authentication Successfull", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(RegisterActivity.this, "Authentication Successfull", R.style.mytoast).show();
                                     Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
                                 else {
-                                    Toast.makeText(RegisterActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                    StyleableToast.makeText(RegisterActivity.this, "Authentication Failed", R.style.mytoast).show();
                                 }
                             };
                         });
@@ -80,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                 startActivity(intent);
                 finish();
+
             }
         });
 
