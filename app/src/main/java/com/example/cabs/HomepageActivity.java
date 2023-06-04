@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.cabs.CariKendaraan.TemukanKendaraan;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -43,7 +44,7 @@ public class HomepageActivity extends AppCompatActivity {
         bt_informasiKendaraan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomepageActivity.this,TemukanKendaraanActivity.class);
+                Intent intent = new Intent(HomepageActivity.this,TemukanKendaraan.class);
                 startActivity(intent);
                 finish();
             }
