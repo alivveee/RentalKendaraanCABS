@@ -12,6 +12,8 @@ import android.view.animation.LinearInterpolator;
 
 import com.example.cabs.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +28,7 @@ public class TemukanKendaraan extends AppCompatActivity {
     DatabaseReference database;
     ArrayList<ModelKendaraan> listKendaraan;
     RecyclerView rvKendaraan;
+    FirebaseUser user;
 
 
     @Override
@@ -35,6 +38,7 @@ public class TemukanKendaraan extends AppCompatActivity {
         btAdd = findViewById(R.id.bt_add);
         rvKendaraan = findViewById(R.id.rv_kendaraan);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance().getReference();
 
         btAdd.setOnClickListener(view -> {
@@ -49,7 +53,7 @@ public class TemukanKendaraan extends AppCompatActivity {
     }
 
     private void tampilData() {
-        database.child("Kendaraan").addValueEventListener(new ValueEventListener() {
+        database.child(user.getUid()).child("Kendaraan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listKendaraan = new ArrayList<>();

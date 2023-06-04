@@ -44,7 +44,7 @@ public class HomepageActivity extends AppCompatActivity {
         bt_informasiKendaraan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomepageActivity.this,TemukanKendaraan.class);
+                Intent intent = new Intent(HomepageActivity.this, TemukanKendaraan.class);
                 startActivity(intent);
                 finish();
             }
