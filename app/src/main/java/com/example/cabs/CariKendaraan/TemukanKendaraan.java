@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 
 import com.example.cabs.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class TemukanKendaraan extends AppCompatActivity {
-    FloatingActionButton btAdd;
+    ImageView btAdd, btBack;
     AdapterKendaraan adapterKendaraan;
     DatabaseReference database;
     ArrayList<ModelKendaraan> listKendaraan;
@@ -34,8 +35,9 @@ public class TemukanKendaraan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_temukan_kendaraan);
-        btAdd = findViewById(R.id.bt_add);
+        setContentView(R.layout.daftar_kendaraan);
+        btAdd = findViewById(R.id.bt_addKendaraan);
+        btBack = findViewById(R.id.bt_back);
         rvKendaraan = findViewById(R.id.rv_kendaraan);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -43,6 +45,10 @@ public class TemukanKendaraan extends AppCompatActivity {
 
         btAdd.setOnClickListener(view -> {
             startActivity(new Intent(this, TambahKendaraan.class));
+        });
+
+        btBack.setOnClickListener(view -> {
+            finish();
         });
 
         RecyclerView.LayoutManager mLayout = new LinearLayoutManager(this);
