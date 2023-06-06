@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.184" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/img_gambarKendaraan"
         android:layout_width="220dp"
         android:layout_height="404dp"
         android:layout_marginBottom="24dp"
@@ -92,11 +92,11 @@
 
         android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.305"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
+        app:layout_constraintTop_toTopOf="@+id/img_gambarKendaraan"
         app:layout_constraintVertical_bias="0.044" />
 
     <EditText
@@ -110,9 +110,9 @@
 
         android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/mesin"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
@@ -124,10 +124,10 @@
         android:fontFamily="@font/intersemibold"
         android:text="Mesin"
         android:textSize="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
         app:layout_constraintVertical_bias="1.0" />
 
 
@@ -140,9 +140,9 @@
         android:text="Tahun Kendaraan"
         android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/hargaSewa"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
         app:layout_constraintTop_toBottomOf="@+id/mesin" />
 
 
@@ -155,9 +155,9 @@
         android:text="Harga Sewa/hari"
         android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/muatPen"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
         app:layout_constraintTop_toBottomOf="@+id/tahunKen" />
 
 
@@ -170,9 +170,9 @@
         android:text="Muat Penumpang"
         android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/jumlahKen"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
         app:layout_constraintTop_toBottomOf="@+id/hargaSewa" />
 
 
@@ -185,9 +185,9 @@
         android:text="Jumlah Kendaraan"
         android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/deskripsi"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
         app:layout_constraintTop_toBottomOf="@+id/muatPen" />
 
     <EditText
@@ -201,9 +201,9 @@
         android:text="Deskripsi"
         android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
         app:layout_constraintTop_toBottomOf="@+id/jumlahKen" />
 
     <ImageView
@@ -212,11 +212,11 @@
         android:layout_height="45dp"
         android:background="@drawable/gambar"
 
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
+        app:layout_constraintTop_toTopOf="@+id/img_gambarKendaraan"
         app:layout_constraintVertical_bias="0.841" />
 
 
@@ -225,8 +225,8 @@
         android:layout_height="wrap_content"
         android:text="Upload Gambar"
         android:textSize="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
+        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
         app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/deskripsi"

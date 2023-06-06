@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
+import com.example.cabs.HomepageActivity;
 import com.example.cabs.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +49,7 @@ public class TemukanKendaraan extends AppCompatActivity {
         });
 
         btBack.setOnClickListener(view -> {
+            startActivity(new Intent(this, HomepageActivity.class));
             finish();
         });
 
