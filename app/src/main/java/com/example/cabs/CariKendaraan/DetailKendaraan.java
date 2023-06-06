@@ -31,7 +31,6 @@ public class DetailKendaraan extends AppCompatActivity {
         tvDeskripsi = findViewById(R.id.tv_deskripsi);
 
 
-
         Intent intent = getIntent();
         if (intent != null) {
             String namaKendaraan = intent.getStringExtra("namaKendaraan");
@@ -41,7 +40,6 @@ public class DetailKendaraan extends AppCompatActivity {
             String jumlahPenumpang = intent.getStringExtra("jumlahPenumpang");
             String jumlahKendaraan = intent.getStringExtra("jumlahKendaraan");
             String deskripsi = intent.getStringExtra("deskripsi");
-
 
 
             // Set TextView dengan data yang diterima
