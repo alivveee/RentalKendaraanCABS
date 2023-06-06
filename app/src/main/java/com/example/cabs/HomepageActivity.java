@@ -10,12 +10,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.cabs.CariKendaraan.TemukanKendaraan;
+import com.example.cabs.CariPenyewa.TemukanPenyewa;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomepageActivity extends AppCompatActivity {
     LinearLayout logOut;
     Button bt_informasiKendaraan;
+    Button bt_daftarSewa;
     TextView displayname;
 
     FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
@@ -30,6 +32,7 @@ public class HomepageActivity extends AppCompatActivity {
         logOut = findViewById(R.id.logOut);
         displayname = findViewById(R.id.textView3);
         bt_informasiKendaraan = findViewById(R.id.bt_informasiKendaraan);
+        bt_daftarSewa = findViewById(R.id.bt_daftarSewa);
 
 
         logOut.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +52,15 @@ public class HomepageActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        bt_daftarSewa.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomepageActivity.this, TemukanPenyewa.class);
+                startActivity(intent);
+                finish();
+            }
+        }));
     }
 
 
