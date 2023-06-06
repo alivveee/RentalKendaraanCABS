@@ -65,21 +65,21 @@
 
     <View
         android:id="@+id/view3"
-        android:layout_width="300dp"
+        android:layout_width="350dp"
         android:layout_height="200dp"
         android:background="@drawable/form"
-        app:flow_horizontalAlign="center"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.026" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="20dp"/>
 
     <View
         android:id="@+id/sort"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_width="350dp"
+        android:layout_height="230dp"
         android:background="@drawable/form"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,16 +101,7 @@
         app:layout_constraintTop_toTopOf="@+id/view3"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/alamat"
-        android:layout_width="215dp"
-        android:layout_height="35dp"
-        android:text="Alamat"
-        android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.223"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toBottomOf="@+id/namaLeng" />
+
 
     <TextView
         android:id="@+id/textView3"
@@ -126,144 +117,160 @@
         app:layout_constraintTop_toTopOf="@+id/sort"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/namaLeng"
-        android:layout_width="215dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_nama"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Nama Lengkap"
+        android:hint="Nama Lengkap"
+        android:textColorHint="@color/kuning"
         android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.223"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:hintTextColor="@color/kuning"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-    <EditText
-        android:id="@+id/noHP"
-        android:layout_width="215dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:id="@+id/input_alamat"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Alamat"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_nama"
+        android:textColorHint="@color/kuning"
+        app:hintTextColor="@color/kuning">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:id="@+id/input_no_hp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:text="No HP"
+        android:hint="Nomor Hp"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.223"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toBottomOf="@+id/alamat"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_alamat"
+        app:layout_constraintVertical_bias="0.0"
+        android:textColorHint="@color/kuning"
+        app:hintTextColor="@color/kuning">
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_no_hp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        android:background="@drawable/gambar"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toBottomOf="@+id/noHP"
-        app:layout_constraintVertical_bias="0.333" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView6"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
 
-    <TextView
-        android:layout_width="74dp"
+<!--        android:background="@drawable/gambar"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/view3"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/view3"-->
+<!--        app:layout_constraintHorizontal_bias="0.07"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/view3"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/noHP"-->
+<!--        app:layout_constraintVertical_bias="0.333" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="74dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Upload Gambar"-->
+<!--        android:textSize="8dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/view3"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/view3"-->
+<!--        app:layout_constraintHorizontal_bias="0.039"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imageView6"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/noHP"-->
+<!--        app:layout_constraintVertical_bias="0.369" />-->
+
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/merkKen"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@color/grey"-->
+<!--        android:text="Mazda Miata"-->
+<!--        android:textSize="10dp"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/sort"-->
+<!--        app:layout_constraintHorizontal_bias="0.31"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/sort"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/merken" />-->
+
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView5"-->
+<!--        android:layout_width="20dp"-->
+<!--        android:layout_height="20dp"-->
+<!--        android:background="@drawable/sort"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/merkKen"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/merkKen"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/merkKen"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/merkKen" />-->
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:id="@+id/input_tanggal"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Upload Gambar"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/noHP"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <TextView
-        android:id="@+id/merken"
-        android:layout_width="215dp"
-        android:layout_height="20dp"
-        android:text="Merk Kendaraan"
-        android:textColor="@color/black"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/sort"
         app:layout_constraintEnd_toEndOf="@+id/sort"
-        app:layout_constraintHorizontal_bias="0.223"
         app:layout_constraintStart_toStartOf="@+id/sort"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.136" />
+        app:layout_constraintTop_toBottomOf="@+id/input_merk_kendaraan"
+        app:layout_constraintVertical_bias="0.01"
+        android:textColorHint="@color/kuning"
+        app:hintTextColor="@color/kuning"
+        android:hint="Pilih Tanggal Disewa"
+        >
 
-    <EditText
-        android:id="@+id/merkKen"
-        android:layout_width="200dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/grey"
-        android:text="Mazda Miata"
-        android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/sort"
-        app:layout_constraintHorizontal_bias="0.31"
-        app:layout_constraintStart_toStartOf="@+id/sort"
-        app:layout_constraintTop_toBottomOf="@+id/merken" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="false"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/sort"
-        app:layout_constraintBottom_toBottomOf="@+id/merkKen"
-        app:layout_constraintEnd_toEndOf="@+id/merkKen"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/merkKen"
-        app:layout_constraintTop_toTopOf="@+id/merkKen" />
-
-
-    <EditText
-        android:id="@+id/tanggalAwal"
-        android:layout_width="215dp"
-        android:layout_height="35dp"
-        android:text="Tanggal Awal Rental"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sort"
-        app:layout_constraintEnd_toEndOf="@+id/sort"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="@+id/sort"
-        app:layout_constraintTop_toBottomOf="@+id/merkKen"
-        app:layout_constraintVertical_bias="0.164" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:id="@+id/date"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:background="@drawable/calendar"
-        app:layout_constraintBottom_toBottomOf="@+id/tanggalAwal"
-        app:layout_constraintEnd_toEndOf="@+id/tanggalAwal"
+        app:layout_constraintBottom_toBottomOf="@+id/input_tanggal"
+        app:layout_constraintEnd_toEndOf="@+id/input_tanggal"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/tanggalAwal"
-        app:layout_constraintTop_toTopOf="@+id/tanggalAwal"
+        app:layout_constraintStart_toStartOf="@+id/input_tanggal"
+        app:layout_constraintTop_toTopOf="@+id/input_tanggal"
         app:layout_constraintVertical_bias="0.533" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="215dp"
-        android:layout_height="35dp"
-        android:text="Tanggal Selesai Rental"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sort"
-        app:layout_constraintEnd_toEndOf="@+id/sort"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="@+id/sort"
-        app:layout_constraintTop_toBottomOf="@+id/tanggalAwal"
-        app:layout_constraintVertical_bias="0.0" />
 
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:background="@drawable/calendar"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/tanggalAwal"
-        app:layout_constraintVertical_bias="0.466" />
 
     <View
         android:id="@+id/footer"
@@ -273,20 +280,122 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-    
-    <Button
-        android:id="@+id/submit"
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        android:text="Submit"
         android:fontFamily="@font/intersemibold"
+        android:text="Submit"
         android:textColor="@color/kuning"
         app:layout_constraintBottom_toBottomOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/footer"
         app:layout_constraintVertical_bias="0.644" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_merk_kendaraan"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Merk Kendaraan"
+        android:textColorHint="@color/kuning"
+        android:textSize="10dp"
+        app:boxBackgroundColor="@color/yungabu"
+        app:hintTextColor="@color/kuning"
+        app:layout_constraintEnd_toEndOf="@+id/sort"
+        app:layout_constraintStart_toStartOf="@+id/sort"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/tv_merk_kendaraan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="390dp" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/bt_upload_image"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_height="70dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/sort"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/sort"-->
+<!--        app:layout_constraintHorizontal_bias="0.211"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/sort"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/input_tanggal"-->
+<!--        app:layout_constraintVertical_bias="0.526"-->
+<!--        android:backgroundTint="@color/yungabu"-->
+<!--        android:text="Upload Gambar"-->
+<!--        android:textSize="7dp"-->
+<!--        android:textColor="@color/kuning"-->
+
+<!--        >-->
+
+<!--    </com.google.android.material.button.MaterialButton>-->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_upload_image"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_tanggal"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/yungabu"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/upload_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:src="@drawable/upload_image">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Image"
+                    android:textAlignment="center"
+                    android:textColor="@color/kuning">
+
+                </TextView>
+
+
+
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

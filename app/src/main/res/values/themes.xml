@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.CABS" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/abuabu</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -25,7 +25,7 @@
         <item name="stStrokeColor">#fff</item>
 <!--        <item name="stIconStart">@drawable/ic</item>-->
 <!--        <item name="stIconEnd">@drawable/ic</item>-->
-        <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stLength">SHORT</item> LONG or SHORT
         <item name="stGravity">top</item> top or center
         <item name="stRadius">8dp</item>
     </style>
