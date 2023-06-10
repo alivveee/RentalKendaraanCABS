@@ -8,69 +8,83 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <!--    header-->
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/rectangell"
+            android:backgroundTint="@color/abuabu"
+            android:layout_marginTop="0dp">
+        </View>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="53dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@id/header"
+            android:layout_alignRight="@id/header"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/logo" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top">
-
-            <View
-                android:id="@+id/header"
-                android:layout_width="match_parent"
-                android:layout_height="257dp"
-                android:background="@drawable/rectangell"
-                android:backgroundTint="@color/abuabu"
-                android:layout_marginTop="0dp">
-            </View>
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="63dp"
-                android:layout_height="60dp"
-                android:layout_alignTop="@id/header"
-                android:layout_alignRight="@id/header"
-                android:layout_margin="20dp"
-                android:background="@drawable/logo" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="150dp">
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="301dp"
-                    android:layout_height="67dp"
-                    android:background="@drawable/search"/>
-                <ImageView
-                    android:layout_width="43dp"
-                    android:layout_height="45dp"
-                    android:background="@drawable/slider"
-                    android:layout_marginLeft="5dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/header" />
-
-            </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="127dp"
+            android:paddingStart="15dp">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:id="@+id/input_alamat"
+                android:layout_width="310dp"
+                android:layout_height="45dp"
+                android:hint="cari"
+                android:textSize="10dp"
+                app:boxStrokeWidth="0dp"
+                android:background="@drawable/rounded_background">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </EditText>
+            </com.google.android.material.textfield.TextInputLayout>
             <ImageView
-                android:id="@+id/bt_back"
-                android:layout_width="53dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/back"
-                android:backgroundTint="@color/kuning"
-                android:layout_marginTop="30dp"/>
-            <TextView
-                android:id="@+id/temukan"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="33dp"
-                android:layout_marginTop="60dp"
-                android:text="Temukan Kendaraan"
-                android:textStyle="bold"
-                android:textColor="@color/kuning"
-                android:textSize="28sp" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/slider"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/header" />
 
-        </RelativeLayout>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/bt_back"
+            android:layout_width="53dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/back"
+            android:backgroundTint="@color/kuning"
+            android:layout_marginTop="25dp"/>
+        <TextView
+            android:id="@+id/temukan"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="50dp"
+            android:text="Temukan Kendaraan"
+            android:textStyle="bold"
+            android:textColor="@color/kuning"
+            android:textSize="26sp" />
 
-    <!--        footer-->
+    </RelativeLayout>
+
+
+    <!--        end header-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -84,6 +98,7 @@
             tools:listitem="@layout/layout_item_kendaraam"></androidx.recyclerview.widget.RecyclerView>
     </androidx.core.widget.NestedScrollView>
 
+<!--    footer-->
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,18 +106,20 @@
             <View
                 android:id="@+id/footer"
                 android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_marginTop="58dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="35dp"
                 android:background="@drawable/footer" />
 
             <ImageView
                 android:id="@+id/bt_addKendaraan"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/btplus"/>
 
         </RelativeLayout>
+    <!--end footer-->
 
 </LinearLayout>
+

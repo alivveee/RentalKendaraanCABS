@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.ktx.Firebase;
 
 import io.github.muddz.styleabletoast.StyleableToast;
@@ -93,5 +94,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = firebaseauth.getCurrentUser();
+        if(currentUser != null){
+            reload();
+        }
+    }
+    private void reload(){
+        FirebaseUser currentUser = firebaseauth.getCurrentUser();
+        StyleableToast.makeText(MainActivity.this, "Welcome "+ currentUser.getDisplayName(), R.style.mytoast).show();
+        startActivity(new Intent(this, HomepageActivity.class));
     }
 }

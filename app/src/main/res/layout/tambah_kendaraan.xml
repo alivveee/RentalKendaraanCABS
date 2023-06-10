@@ -1,252 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bacground"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <View
-        android:id="@+id/header"
-        android:layout_width="412dp"
-        android:layout_height="198dp"
-        android:background="@drawable/rectangell"
-        android:backgroundTint="@color/abuabu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="63dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="332dp"
-        android:background="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="@+id/header"
-        app:layout_constraintVertical_bias="0.081" />
-
-    <TextView
-        android:id="@+id/tambah"
+    <!--    header-->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="200dp"
-        android:text="Tambah Kendaraan"
-        android:textColor="@color/kuning"
-        android:fontFamily="@font/intersemibold"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header" />
+        android:layout_gravity="top">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="53dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/back"
-        android:backgroundTint="@color/kuning"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
+        <View
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/rectangell"
+            android:backgroundTint="@color/abuabu"
+            android:layout_marginTop="0dp">
+        </View>
 
-    <ImageView
-        android:id="@+id/img_gambarKendaraan"
-        android:layout_width="220dp"
-        android:layout_height="404dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/form"
-        android:backgroundTint="@color/creme"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="53dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@id/header"
+            android:layout_alignRight="@id/header"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/logo" />
+        <ImageView
+            android:id="@+id/bt_back"
+            android:layout_width="53dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/back"
+            android:backgroundTint="@color/kuning"
+            android:layout_marginTop="25dp"/>
+        <TextView
+            android:id="@+id/temukan"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="50dp"
+            android:text="Tambah Kendaraan"
+            android:textStyle="bold"
+            android:textColor="@color/kuning"
+            android:textSize="26sp" />
 
-    <View
-        android:id="@+id/footer"
-        android:layout_width="471dp"
-        android:layout_height="93dp"
-        android:background="@drawable/footer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    </RelativeLayout>
+    <!--        end header-->
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="161dp"
-        android:layout_height="24dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Detail Kendaraan"
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/transparent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Kendaraan"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/abuabu"
+                    android:textSize="24dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="8dp">
+                </TextView>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Kendaraan"
+                    android:textColorHint="@color/kuning"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
 
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.305"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toTopOf="@+id/img_gambarKendaraan"
-        app:layout_constraintVertical_bias="0.044" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_namaKendaraan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tahun Kendaraan"
+                    android:textColorHint="@color/kuning"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
 
-    <EditText
-        android:id="@+id/namaKen"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="1dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Nama Kendaraan"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_tahunKendaraan"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tarif Kendaraan / Hari"
+                    android:textColorHint="@color/kuning"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
 
-        android:textSize="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/mesin"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_tarifKendaraan"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Jenis Mesin"
+                    android:textColorHint="@color/kuning"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
 
-    <EditText
-        android:id="@+id/mesin"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="267dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Mesin"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.103"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintVertical_bias="1.0" />
+                    <AutoCompleteTextView
+                        android:id="@+id/et_jenisMesin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Jumlah Penumpang"
+                    android:textColorHint="@color/kuning"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
 
-    <EditText
-        android:id="@+id/tahunKen"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="1dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Tahun Kendaraan"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/hargaSewa"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toBottomOf="@+id/mesin" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_jumlahPenumpang"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Jumlah Kendaraan"
+                    android:textColorHint="@color/kuning"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_jumlahKendaraan"
+                        android:inputType="number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Deskripsi"
+                    android:textColorHint="@color/kuning"
+                    android:textSize="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp">
 
-    <EditText
-        android:id="@+id/hargaSewa"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="1dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Harga Sewa/hari"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/muatPen"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toBottomOf="@+id/tahunKen" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_deskripsiKendaraan"
+                        android:inputType="textMultiLine|textImeMultiLine"
+                        android:minLines="3"
+                        android:maxLines="5"
+                        android:imeOptions="actionDone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_upload_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    app:cardCornerRadius="10dp"
+                    android:elevation="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/input_tanggal"
+                    >
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/yungabu"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-    <EditText
-        android:id="@+id/muatPen"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="1dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Muat Penumpang"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/jumlahKen"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toBottomOf="@+id/hargaSewa" />
+                        <ImageView
+                            android:id="@+id/upload_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:src="@drawable/upload_image">
 
+                        </ImageView>
 
-    <EditText
-        android:id="@+id/jumlahKen"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="1dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Jumlah Kendaraan"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/deskripsi"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toBottomOf="@+id/muatPen" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Upload Image"
+                            android:textAlignment="center"
+                            android:textColor="@color/kuning">
+                        </TextView>
 
-    <EditText
-        android:id="@+id/deskripsi"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Deskripsi"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toBottomOf="@+id/jumlahKen" />
+                    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/gambar"
+                </androidx.cardview.widget.CardView>
 
-        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="@+id/img_gambarKendaraan"
-        app:layout_constraintTop_toTopOf="@+id/img_gambarKendaraan"
-        app:layout_constraintVertical_bias="0.841" />
+            </LinearLayout>
+        </RelativeLayout>
 
+    <!--    footer-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/abuabu">
 
-    <TextView
-        android:layout_width="74dp"
-        android:layout_height="wrap_content"
-        android:text="Upload Gambar"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/img_gambarKendaraan"
-        app:layout_constraintEnd_toEndOf="@+id/img_gambarKendaraan"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/deskripsi"
-        app:layout_constraintVertical_bias="0.24" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_submit"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/intersemibold"
+            android:text="Submit"
+            android:textColor="@color/kuning" />
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:text="Submit"
-        android:fontFamily="@font/intersemibold"
-        android:textColor="@color/kuning"
-        app:layout_constraintBottom_toBottomOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/footer"
-        app:layout_constraintVertical_bias="0.644" />
+    </RelativeLayout>
+    <!--end footer-->
 
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

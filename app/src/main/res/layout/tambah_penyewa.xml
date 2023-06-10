@@ -379,13 +379,7 @@
                     android:text="Upload Image"
                     android:textAlignment="center"
                     android:textColor="@color/kuning">
-
                 </TextView>
-
-
-
-
-
 
         </LinearLayout>
 
