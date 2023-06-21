@@ -10,9 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,11 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,8 +29,7 @@ import androidx.core.content.FileProvider;
 import androidx.core.util.Pair;
 
 import com.bumptech.glide.Glide;
-import com.example.cabs.CariKendaraan.TambahKendaraan;
-import com.example.cabs.CariKendaraan.TemukanKendaraan;
+
 import android.Manifest;
 import com.example.cabs.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,8 +51,6 @@ import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import android.content.pm.PackageManager;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.NumberFormat;
@@ -68,7 +61,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
@@ -114,7 +106,7 @@ public class TambahPenyewaa extends AppCompatActivity {
         nama = findViewById(R.id.et_nama);
         alamat = findViewById(R.id.et_alamat);
         no_hp = findViewById(R.id.et_no_hp);
-        upload_image = findViewById(R.id.upload_image);
+        upload_image = findViewById(R.id.upload_imgg);
         submit = findViewById(R.id.bt_submit);
         il_nama = findViewById(R.id.input_nama);
         il_alamat = findViewById(R.id.input_alamat);

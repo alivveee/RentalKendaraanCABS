@@ -63,7 +63,7 @@
 
         </LinearLayout>
         <ImageView
-            android:id="@+id/bt_back"
+            android:id="@+id/bt_backedt"
             android:layout_width="53dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
