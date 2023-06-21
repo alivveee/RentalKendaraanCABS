@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="#232323"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/dialog_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Name"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:layout_marginTop="90dp"
+            />
+
+        <TextView
+            android:id="@+id/dialog_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_dialog_call"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile Call"
+
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/baseline_call_24"
+            android:textAlignment="textStart"
+            android:drawablePadding="20dp"
+            android:padding="20dp"
+            android:layout_gravity="start"
+
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_dialog_wa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="Whats APP"
+            android:drawableLeft="@drawable/baseline_message_24"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:drawablePadding="20dp"
+            android:padding="20dp"
+            />
+
+    </LinearLayout>
+
+<ImageView
+    android:id="@+id/dialog_image"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:src="@drawable/profile"
+    android:padding="10dp"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentTop="true"
+    android:scaleType="centerCrop"/>
+
+</RelativeLayout>

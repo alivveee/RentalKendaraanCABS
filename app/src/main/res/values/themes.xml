@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CABS" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.CABS" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/abuabu</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -13,4 +13,26 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="mytoast">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">#fff</item>
+<!--        <item name="stFont">@font/retrofont</item>-->
+        <item name="stTextSize">14sp</item>
+        <item name="stColorBackground">#DAB600</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">1dp</item>
+        <item name="stStrokeColor">#fff</item>
+<!--        <item name="stIconStart">@drawable/ic</item>-->
+<!--        <item name="stIconEnd">@drawable/ic</item>-->
+        <item name="stLength">SHORT</item> LONG or SHORT
+        <item name="stGravity">top</item> top or center
+        <item name="stRadius">8dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item> <!-- Menggunakan sudut lengkung -->
+        <item name="cornerSize">8dp</item> <!-- Ukuran sudut lengkung (sesuaikan dengan keinginan Anda) -->
+    </style>
+
 </resources>
