@@ -1,167 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/bacground"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <View
-        android:id="@+id/header"
-        android:layout_width="412dp"
-        android:layout_height="210dp"
-        android:background="@drawable/rectangell"
-
-        android:backgroundTint="@color/abuabu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="63dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="340dp"
-        android:background="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="@+id/header"
-        app:layout_constraintVertical_bias="0.081" />
-
-    <ImageView
-        android:layout_width="43dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/kalender"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.612" />
-
-
-
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="53dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/back"
-        android:backgroundTint="@color/kuning"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067" />
-
-    <TextView
-        android:id="@+id/temukan"
+    <!--    header-->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="200dp"
-        android:text="Temukan Penyewa"
-        android:fontFamily="@font/intersemibold"
-        android:textColor="@color/kuning"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header" />
+        android:layout_gravity="top">
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_nama"
-        style="@style/Widget.Design.TextInputLayout"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@color/white"
-        android:hint="dd/mm/yy"
-        android:textColorHint="@color/kuning"
-        android:textSize="10dp"
-        app:hintTextColor="@color/kuning"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="40dp"
-        android:layout_marginBottom="20dp"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.TextInputLayout.Rounded">
-
-
-        ``<com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_filter"
+        <View
+            android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="200dp"
+            android:background="@drawable/rectangell"
+            android:backgroundTint="@color/abuabu"
+            android:layout_marginTop="0dp">
+        </View>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="53dp"
+            android:layout_height="50dp"
+            android:layout_alignTop="@id/header"
+            android:layout_alignRight="@id/header"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/logo" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="127dp"
+            android:paddingStart="15dp">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
+<!--                android:id="@+id/input_alamat"-->
+<!--                android:layout_width="310dp"-->
+<!--                android:layout_height="45dp"-->
+<!--                android:hint="cari"-->
+<!--                android:textSize="10dp"-->
+<!--                app:boxStrokeWidth="0dp"-->
+<!--                android:background="@drawable/rounded_background">-->
+<!--                <EditText-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                </EditText>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="310dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <SearchView
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search"
+                    app:searchIcon="@android:drawable/ic_search_category_default"
+                    android:background="@drawable/rounded_search_view" />
+
+                <!-- Tempatkan komponen tampilan lainnya di sini -->
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/calendar"
+                android:backgroundTint="@color/white"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/header" />
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/bt_back"
+            android:layout_width="53dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/back"
+            android:backgroundTint="@color/kuning"
+            android:layout_marginTop="25dp"/>
+        <TextView
+            android:id="@+id/temukan"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="50dp"
+            android:text="Temukan Penyewa"
+            android:textStyle="bold"
+            android:textColor="@color/kuning"
+            android:textSize="26sp" />
+
+    </RelativeLayout>
 
 
-    <View
-        android:id="@+id/footer"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:background="@drawable/footer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-    <ImageView
-        android:id="@+id/bt_tambah_penyewa"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btplus"
+    <!--        end header-->
 
-        app:layout_constraintBottom_toBottomOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.524"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="380dp"
-        android:layout_marginTop="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.0">
-
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_penyewa"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/layout_item_kendaraam">
 
-    <!--    <View-->
-<!--        android:id="@+id/view8"-->
-<!--        android:layout_width="296dp"-->
-<!--        android:layout_height="135dp"-->
-<!--        android:background="@drawable/container1"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/btnplus"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.495"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/header"-->
-<!--        app:layout_constraintVertical_bias="0.106" />-->
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.core.widget.NestedScrollView>
 
-<!--    <ImageView-->
-<!--        android:layout_width="47dp"-->
-<!--        android:layout_height="47dp"-->
-<!--        android:background="@drawable/gambar"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/view8"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/view8"-->
-<!--        app:layout_constraintHorizontal_bias="0.064"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/view8"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/view8"-->
-<!--        app:layout_constraintVertical_bias="0.454" />-->
+    <!--    footer-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp">
+        <View
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/footer" />
 
+        <ImageView
+            android:id="@+id/bt_tambah_penyewa"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/btplus"/>
 
+    </RelativeLayout>
+    <!--end footer-->
 
+</LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>

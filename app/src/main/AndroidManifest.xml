@@ -30,9 +30,9 @@
         <activity
             android:name=".CariKendaraan.AdapterKendaraan"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".CariPenyewa.TemukanPenyewa"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".CariPenyewa.TemukanPenyewa"
+            android:exported="false" />
         <activity
             android:name=".CariPenyewa.ModelPenyewa"
             android:exported="false" />
@@ -46,7 +46,7 @@
             android:name=".CariPenyewa.TambahPenyewaa"
             android:exported="false"/>
         <activity
-            android:name=".CariPenyewa.TemukanPenyewa"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

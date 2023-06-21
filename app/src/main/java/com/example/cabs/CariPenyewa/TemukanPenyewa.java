@@ -2,12 +2,11 @@ package com.example.cabs.CariPenyewa;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +14,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cabs.CariKendaraan.AdapterKendaraan;
-import com.example.cabs.CariKendaraan.ModelKendaraan;
-import com.example.cabs.CariKendaraan.TemukanKendaraan;
 import com.example.cabs.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +36,8 @@ public class TemukanPenyewa extends AppCompatActivity{
     RecyclerView rvPenyewa;
     FirebaseUser user;
 
+    SearchView search;
+
 
     Context mContext;
 
@@ -54,6 +51,7 @@ public class TemukanPenyewa extends AppCompatActivity{
         database = FirebaseDatabase.getInstance().getReference();
 
         tambah_penyewa = findViewById(R.id.bt_tambah_penyewa);
+        search = findViewById(R.id.search);
 
 
         tambah_penyewa.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +115,8 @@ public class TemukanPenyewa extends AppCompatActivity{
         // Panggil metode filterRecyclerView untuk menerapkan filter pada RecyclerView
         filterRecyclerView(filterText);
     }
+
+
 
 
 }

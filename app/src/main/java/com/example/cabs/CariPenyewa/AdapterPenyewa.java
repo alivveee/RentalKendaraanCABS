@@ -50,6 +50,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
     Context mContext;
     private Activity activity;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference kendaraanRef = FirebaseDatabase.getInstance().getReference().child("kendaraan");
     private List<ModelPenyewa> mListFull;
 
     Dialog dialog;
@@ -113,7 +114,6 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
 
         return vHolder;
     }
-
 
 
 
