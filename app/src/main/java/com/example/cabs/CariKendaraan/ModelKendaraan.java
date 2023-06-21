@@ -2,14 +2,14 @@ package com.example.cabs.CariKendaraan;
 
 public class ModelKendaraan {
     private String namaKendaraan, tahunKendaraan, tarifKendaraan, jenisMesin
-            , jumlahPenumpang, jumlahKendaraan, deskripsi;
+            , jumlahPenumpang, jumlahKendaraan, deskripsi, urlGambar;
     private String key;
 
     public ModelKendaraan(){
 
     }
 
-    public ModelKendaraan(String namaKendaraan, String tahunKendaraan, String tarifKendaraan, String jenisMesin, String jumlahPenumpang, String jumlahKendaraan, String deskripsi) {
+    public ModelKendaraan(String namaKendaraan, String tahunKendaraan, String tarifKendaraan, String jenisMesin, String jumlahPenumpang, String jumlahKendaraan, String deskripsi, String urlGambar) {
         this.namaKendaraan = namaKendaraan;
         this.tahunKendaraan = tahunKendaraan;
         this.tarifKendaraan = tarifKendaraan;
@@ -17,6 +17,7 @@ public class ModelKendaraan {
         this.jumlahPenumpang = jumlahPenumpang;
         this.jumlahKendaraan = jumlahKendaraan;
         this.deskripsi = deskripsi;
+        this.urlGambar = urlGambar;
     }
 
     public String getNamaKendaraan() {
@@ -81,5 +82,13 @@ public class ModelKendaraan {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getUrlGambar() {
+        return urlGambar;
+    }
+
+    public void setUrlGambar(String urlGambar) {
+        this.urlGambar = urlGambar;
     }
 }

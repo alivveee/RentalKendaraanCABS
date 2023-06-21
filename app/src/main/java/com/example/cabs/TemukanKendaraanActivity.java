@@ -9,6 +9,6 @@ public class TemukanKendaraanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.temukan_kendaraan);
+        setContentView(R.layout.detail_kendaraan);
     }
 }
