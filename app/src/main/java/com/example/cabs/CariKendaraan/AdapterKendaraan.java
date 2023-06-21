@@ -7,6 +7,8 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +25,12 @@ import com.example.cabs.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyViewHolder> {
     private List<ModelKendaraan> mList;
+    private List<ModelKendaraan> mListFull;
 
     private Activity activity;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
@@ -34,6 +38,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
     public AdapterKendaraan(List<ModelKendaraan> mList, Activity activity) {
         this.mList = mList;
         this.activity = activity;
+        this.mListFull = new ArrayList<>(mList);
     }
 
     @NonNull
@@ -57,6 +62,9 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
                 .load(data.getUrlGambar())
                 .apply(requestOptions)
                 .into(holder.gambarKendaraan);
+
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),android.R.anim.slide_in_left);
+        holder.itemView.startAnimation(animation);
 
     }
 
@@ -99,4 +107,9 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
             activity.startActivity(intent);
             }
         }
+
+    public void filterList(List<ModelKendaraan> filteredList) {
+        mList = filteredList;
+        notifyDataSetChanged();
+    }
     }

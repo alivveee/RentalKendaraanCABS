@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
+import com.example.cabs.CariPenyewa.ModelPenyewa;
 import com.example.cabs.HomepageActivity;
 import com.example.cabs.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,14 +25,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class TemukanKendaraan extends AppCompatActivity {
+public class TemukanKendaraan extends AppCompatActivity implements SearchView.OnQueryTextListener{
     ImageView btAdd, btBack;
     AdapterKendaraan adapterKendaraan;
     DatabaseReference database;
     ArrayList<ModelKendaraan> listKendaraan;
     RecyclerView rvKendaraan;
     FirebaseUser user;
+
+    SearchView search;
+
+    private List<ModelKendaraan> filteredList;
 
 
     @Override
@@ -40,6 +47,8 @@ public class TemukanKendaraan extends AppCompatActivity {
         btAdd = findViewById(R.id.bt_addKendaraan);
         btBack = findViewById(R.id.bt_back);
         rvKendaraan = findViewById(R.id.rv_kendaraan);
+        search = findViewById(R.id.search_kendaraan);
+
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance().getReference();
@@ -58,9 +67,26 @@ public class TemukanKendaraan extends AppCompatActivity {
         rvKendaraan.setItemAnimator(new DefaultItemAnimator());
 
         tampilData();
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterRecyclerView(newText);
+                return true;
+            }
+        });
     }
 
     private void tampilData() {
+        filteredList = new ArrayList<>();
+        if (listKendaraan != null) {
+            filteredList.addAll(listKendaraan);
+        }
         database.child(user.getUid()).child("Kendaraan").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -80,5 +106,35 @@ public class TemukanKendaraan extends AppCompatActivity {
 
             }
         });
+    }
+
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        filterRecyclerView(newText);
+        return true;
+    }
+
+    private void filterRecyclerView(String filterText) {
+        filteredList.clear();
+
+        if (filterText.isEmpty()) {
+            filteredList.addAll(listKendaraan);
+        } else {
+            String filterPattern = filterText.toLowerCase().trim();
+
+            for (ModelKendaraan kendaraan : listKendaraan) {
+                if (kendaraan.getNamaKendaraan().toLowerCase().contains(filterPattern)) {
+                    filteredList.add(kendaraan);
+                } else if (kendaraan.getTarifKendaraan().toLowerCase().contains(filterPattern)) {
+                    filteredList.add(kendaraan);
+                }
+            }
+        }
+
+        adapterKendaraan.filterList(filteredList);
     }
 }

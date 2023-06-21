@@ -35,29 +35,16 @@
             android:background="@drawable/logo" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="127dp"
-            android:paddingStart="15dp">
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"-->
-<!--                android:id="@+id/input_alamat"-->
-<!--                android:layout_width="310dp"-->
-<!--                android:layout_height="45dp"-->
-<!--                android:hint="cari"-->
-<!--                android:textSize="10dp"-->
-<!--                app:boxStrokeWidth="0dp"-->
-<!--                android:background="@drawable/rounded_background">-->
-<!--                <EditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content">-->
-<!--                </EditText>-->
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
+            >
+
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="310dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <SearchView
@@ -73,10 +60,9 @@
 
             </LinearLayout>
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/calendar"
-                android:backgroundTint="@color/white"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/slider"
                 android:layout_marginLeft="5dp"
                 app:layout_constraintBottom_toBottomOf="@+id/header" />
 
@@ -104,6 +90,8 @@
 
 
     <!--        end header-->
+
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

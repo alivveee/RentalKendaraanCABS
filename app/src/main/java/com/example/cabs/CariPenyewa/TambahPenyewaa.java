@@ -141,7 +141,7 @@ public class TambahPenyewaa extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             Glide.with(TambahPenyewaa.this)
-                                    .load(uri).centerCrop()
+                                    .load(uri)
                                     .into(upload_image);
 
                         }
@@ -334,7 +334,7 @@ public class TambahPenyewaa extends AppCompatActivity {
                 case RC_Take_Photo:
                     if (resultCode == RESULT_OK && currentPhotoPath != null) {
 
-                        Glide.with(this).load(new File(currentPhotoPath)).centerCrop().into(upload_image);
+                        Glide.with(this).load(new File(currentPhotoPath)).fitCenter().into(upload_image);
 
                         ////scaning masuk ke gallery android (opsional)//////////////////
                         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
