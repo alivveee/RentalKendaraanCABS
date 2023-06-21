@@ -1,8 +1,10 @@
 package com.example.cabs.CariPenyewa;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
@@ -27,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class TemukanPenyewa extends AppCompatActivity{
 
@@ -36,6 +40,9 @@ public class TemukanPenyewa extends AppCompatActivity{
     ArrayList<ModelPenyewa> listPenyewa;
     RecyclerView rvPenyewa;
     FirebaseUser user;
+
+
+    Context mContext;
 
 
     protected void onCreate( Bundle savedInstanceState) {
@@ -73,9 +80,11 @@ public class TemukanPenyewa extends AppCompatActivity{
                 listPenyewa = new ArrayList<>();
 
                 for (DataSnapshot item : snapshot.getChildren()){
-                    ModelPenyewa penyewa = item.getValue(ModelPenyewa.class);
-                    penyewa.setKey(item.getKey());
-                    listPenyewa.add(penyewa);
+                    if (item.getValue() instanceof HashMap) {
+                        ModelPenyewa penyewa = item.getValue(ModelPenyewa.class);
+                        penyewa.setKey(item.getKey());
+                        listPenyewa.add(penyewa);
+                    }
                 }
                 adapterPenyewa = new AdapterPenyewa(listPenyewa, TemukanPenyewa.this);
                 rvPenyewa.setAdapter(adapterPenyewa);
@@ -83,10 +92,31 @@ public class TemukanPenyewa extends AppCompatActivity{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("Firebase Error", "Kesalahan saat membaca data: " + error.getMessage());
 
             }
         });
 
     }
+
+    private void filterRecyclerView(String filterText) {
+        List<ModelPenyewa> filteredList = new ArrayList<>();
+
+        for (ModelPenyewa item : listPenyewa) {
+            if (item.getTanggal().equals(filterText)) {
+                filteredList.add(item);
+            }
+        }
+
+        adapterPenyewa = new AdapterPenyewa(filteredList, TemukanPenyewa.this);
+        rvPenyewa.setAdapter(adapterPenyewa);
+    }
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        String filterText = s.toString().trim(); // Dapatkan teks filter dan hapus spasi di awal dan akhir
+
+        // Panggil metode filterRecyclerView untuk menerapkan filter pada RecyclerView
+        filterRecyclerView(filterText);
+    }
+
 
 }

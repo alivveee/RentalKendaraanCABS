@@ -6,396 +6,356 @@
     android:background="@drawable/bacground"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <View
-        android:id="@+id/header"
-        android:layout_width="412dp"
-        android:layout_height="170dp"
-        android:background="@drawable/rectangell"
-        android:backgroundTint="@color/abuabu"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="63dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="332dp"
-        android:background="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="@+id/header"
-        app:layout_constraintVertical_bias="0.081" />
-
-    <TextView
-        android:id="@+id/tambah"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="200dp"
-        android:fontFamily="@font/intersemibold"
-        android:text="Tambah Penyewa"
-        android:textColor="@color/kuning"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="53dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/back"
-        android:backgroundTint="@color/kuning"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintEnd_toStartOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.184" />
-
-
-    <View
-        android:id="@+id/view3"
-        android:layout_width="350dp"
-        android:layout_height="200dp"
-        android:background="@drawable/form"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginTop="20dp"/>
-
-    <View
-        android:id="@+id/sort"
-        android:layout_width="350dp"
-        android:layout_height="230dp"
-        android:background="@drawable/form"
-        app:layout_constraintBottom_toTopOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/intersemibold"
-        android:text="Identitas Penyewa"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="@+id/view3"
-        app:layout_constraintTop_toTopOf="@+id/view3"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/intersemibold"
-        android:text="Kendaraan Disewa"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sort"
-        app:layout_constraintEnd_toEndOf="@+id/sort"
-        app:layout_constraintStart_toStartOf="@+id/sort"
-        app:layout_constraintTop_toTopOf="@+id/sort"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_nama"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Nama Lengkap"
-        android:textColorHint="@color/kuning"
-        android:textSize="10dp"
-        app:hintTextColor="@color/kuning"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/input_alamat"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Alamat"
-        android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_nama"
-        android:textColorHint="@color/kuning"
-        app:hintTextColor="@color/kuning">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_alamat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/input_no_hp"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:hint="Nomor Hp"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_alamat"
-        app:layout_constraintVertical_bias="0.0"
-        android:textColorHint="@color/kuning"
-        app:hintTextColor="@color/kuning">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_no_hp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView6"-->
-<!--        android:layout_width="30dp"-->
-<!--        android:layout_height="30dp"-->
-
-<!--        android:background="@drawable/gambar"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/view3"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/view3"-->
-<!--        app:layout_constraintHorizontal_bias="0.07"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/view3"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/noHP"-->
-<!--        app:layout_constraintVertical_bias="0.333" />-->
-
-<!--    <TextView-->
-<!--        android:layout_width="74dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Upload Gambar"-->
-<!--        android:textSize="8dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/view3"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/view3"-->
-<!--        app:layout_constraintHorizontal_bias="0.039"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imageView6"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/noHP"-->
-<!--        app:layout_constraintVertical_bias="0.369" />-->
-
-
-
-<!--    <EditText-->
-<!--        android:id="@+id/merkKen"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="25dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:background="@color/grey"-->
-<!--        android:text="Mazda Miata"-->
-<!--        android:textSize="10dp"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/sort"-->
-<!--        app:layout_constraintHorizontal_bias="0.31"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/sort"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/merken" />-->
-
-
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView5"-->
-<!--        android:layout_width="20dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:background="@drawable/sort"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/merkKen"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/merkKen"-->
-<!--        app:layout_constraintHorizontal_bias="1.0"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/merkKen"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/merkKen" />-->
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:id="@+id/input_tanggal"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sort"
-        app:layout_constraintEnd_toEndOf="@+id/sort"
-        app:layout_constraintStart_toStartOf="@+id/sort"
-        app:layout_constraintTop_toBottomOf="@+id/input_merk_kendaraan"
-        app:layout_constraintVertical_bias="0.01"
-        android:textColorHint="@color/kuning"
-        app:hintTextColor="@color/kuning"
-        android:hint="Pilih Tanggal Disewa"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_tanggal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:focusable="false"
-            android:clickable="false"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <ImageView
-        android:id="@+id/date"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/calendar"
-        app:layout_constraintBottom_toBottomOf="@+id/input_tanggal"
-        app:layout_constraintEnd_toEndOf="@+id/input_tanggal"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/input_tanggal"
-        app:layout_constraintTop_toTopOf="@+id/input_tanggal"
-        app:layout_constraintVertical_bias="0.533" />
-
-
-
-    <View
-        android:id="@+id/footer"
-        android:layout_width="471dp"
-        android:layout_height="93dp"
-        android:background="@drawable/footer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bt_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/intersemibold"
-        android:text="Submit"
-        android:textColor="@color/kuning"
-        app:layout_constraintBottom_toBottomOf="@+id/footer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/footer"
-        app:layout_constraintVertical_bias="0.644" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_merk_kendaraan"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Merk Kendaraan"
-        android:textColorHint="@color/kuning"
-        android:textSize="10dp"
-        app:boxBackgroundColor="@color/yungabu"
-        app:hintTextColor="@color/kuning"
-        app:layout_constraintEnd_toEndOf="@+id/sort"
-        app:layout_constraintStart_toStartOf="@+id/sort"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-
-        >
-
-        <AutoCompleteTextView
-            android:id="@+id/tv_merk_kendaraan"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="none"
-            tools:layout_editor_absoluteX="72dp"
-            tools:layout_editor_absoluteY="390dp" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-<!--    <com.google.android.material.button.MaterialButton-->
-<!--        android:id="@+id/bt_upload_image"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_marginLeft="15dp"-->
-<!--        android:layout_height="70dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/sort"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/sort"-->
-<!--        app:layout_constraintHorizontal_bias="0.211"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/sort"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/input_tanggal"-->
-<!--        app:layout_constraintVertical_bias="0.526"-->
-<!--        android:backgroundTint="@color/yungabu"-->
-<!--        android:text="Upload Gambar"-->
-<!--        android:textSize="7dp"-->
-<!--        android:textColor="@color/kuning"-->
-
-<!--        >-->
-
-<!--    </com.google.android.material.button.MaterialButton>-->
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_upload_image"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_tanggal"
-        >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/yungabu"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:id="@id/header"
+            android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/upload_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:src="@drawable/upload_image">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                </ImageView>
+                <View
+                    android:id="@+id/header"
+                    android:layout_width="412dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/rectangell"
+                    android:backgroundTint="@color/abuabu"
+                    android:layout_weight="1"
+                    />
+
+                <View
+                    android:id="@+id/logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/logo"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="16dp"
+                    />
 
                 <TextView
+                    android:id="@+id/tambah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Upload Image"
-                    android:textAlignment="center"
-                    android:textColor="@color/kuning">
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="45dp"
+                    android:paddingEnd="200dp"
+                    android:fontFamily="@font/intersemibold"
+                    android:text="Tambah Penyewa"
+                    android:textColor="@color/kuning"
+                    android:textSize="32dp"
+                    />
 
-                </TextView>
+
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/icon_back"
+                        android:contentDescription="Back Icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Back"
+                        android:textColor="@color/kuning"
+                        android:textSize="16dp">
+
+                    </TextView>
+
+
+                </LinearLayout>
 
 
 
+            </RelativeLayout>
 
 
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
 
 
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/view3"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/form"
+                app:layout_constraintBottom_toTopOf="@+id/footer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header"
+                app:layout_constraintVertical_bias="0.0"
+                android:layout_marginTop="10dp"
+                app:cardElevation="25dp"
+                app:cardCornerRadius="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="@font/intersemibold"
+                        android:text="Identitas Penyewa"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_nama"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="0dp"
+                        android:hint="Nama Lengkap"
+                        android:textColorHint="@color/kuning"
+                        android:textSize="10dp"
+                        app:hintTextColor="@color/kuning"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_nama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_alamat"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/input_nama"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="0dp"
+
+                        android:hint="Alamat"
+                        android:textColorHint="@color/kuning"
+                        android:textSize="10dp"
+                        app:hintTextColor="@color/kuning"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_alamat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_no_hp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/input_alamat"
+                        android:layout_centerHorizontal="true"
+                        android:hint="Nomor Hp"
+                        android:textColorHint="@color/kuning"
+                        android:textSize="10dp"
+                        app:hintTextColor="@color/kuning"
+                        app:layout_constraintTop_toBottomOf="@+id/input_alamat"
+                        app:errorEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_no_hp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
+                            android:digits="0123456789+"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_upload_image"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/input_no_hp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:id="@+id/upload_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:src="@drawable/upload_image">
+
+                            </ImageView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Upload Image"
+                                android:textAlignment="center"
+                                android:textColor="@color/kuning">
+
+                            </TextView>
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/sort"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view3"
+                app:cardElevation="25dp"
+                app:cardCornerRadius="20dp"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/intersemibold"
+                        android:text="Kendaraan Disewa"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:layout_centerHorizontal="true"/>
 
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_merk_kendaraan"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="0dp"
+                        android:hint="Merk Kendaraan"
+                        android:textColorHint="@color/kuning"
+                        android:textSize="10dp"
+                        app:hintTextColor="@color/kuning">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/tv_merk_kendaraan"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="none" />
 
 
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_tanggal"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                         android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/input_merk_kendaraan"
+                        android:hint="Pilih Tanggal Disewa"
+                        android:textColorHint="@color/kuning"
+                        android:textSize="10dp"
+                        app:hintTextColor="@color/kuning"
+                        app:endIconMode="custom"
+                        app:endIconDrawable="@drawable/icon_calendar"
+                        app:endIconTint="@color/black"
+                        android:layout_marginBottom="20dp"
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_tanggal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:inputType="none"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_footer"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal"
+            >
+
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total : "
+                android:textColor="@color/kuning"
+                android:textSize="30dp"
+                android:layout_weight="1"
+                android:layout_marginStart="30dp"
+                android:textStyle="bold"
+                >
+
+            </TextView>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/intersemibold"
+                android:text="Submit"
+                android:textColor="@color/kuning"
+                android:layout_marginEnd="16dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

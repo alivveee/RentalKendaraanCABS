@@ -39,21 +39,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toEndOf="@+id/date"
         app:layout_constraintTop_toBottomOf="@+id/view"
         app:layout_constraintVertical_bias="0.612" />
 
-    <ImageView
-        android:id="@+id/date"
-        android:layout_width="301dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/search"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temukan"
-        app:layout_constraintVertical_bias="1.0" />
+
 
     <ImageView
         android:id="@+id/back"
@@ -85,23 +74,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header" />
 
-    <TextView
-        android:layout_width="107dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="8dp"
-        android:text="dd/mm/yyy"
-        app:layout_constraintBottom_toBottomOf="@+id/date"
-        app:layout_constraintEnd_toEndOf="@+id/date"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="@+id/date"
-        app:layout_constraintTop_toTopOf="@+id/date"
-        app:layout_constraintVertical_bias="0.479" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_nama"
+        style="@style/Widget.Design.TextInputLayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:hint="dd/mm/yy"
+        android:textColorHint="@color/kuning"
+        android:textSize="10dp"
+        app:hintTextColor="@color/kuning"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="20dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.TextInputLayout.Rounded">
+
+
+        ``<com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <View
         android:id="@+id/footer"
-        android:layout_width="471dp"
-        android:layout_height="93dp"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
         android:background="@drawable/footer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +112,7 @@
         android:id="@+id/bt_tambah_penyewa"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/btplus"
 
         app:layout_constraintBottom_toBottomOf="@+id/footer"
@@ -124,8 +126,10 @@
         android:layout_marginTop="1dp"
         app:layout_constraintBottom_toTopOf="@+id/footer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <androidx.recyclerview.widget.RecyclerView
