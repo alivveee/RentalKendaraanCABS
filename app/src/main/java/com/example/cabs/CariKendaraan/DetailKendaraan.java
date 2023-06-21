@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.cabs.R;
 
 public class DetailKendaraan extends AppCompatActivity {
@@ -40,6 +43,7 @@ public class DetailKendaraan extends AppCompatActivity {
             String jumlahPenumpang = intent.getStringExtra("jumlahPenumpang");
             String jumlahKendaraan = intent.getStringExtra("jumlahKendaraan");
             String deskripsi = intent.getStringExtra("deskripsi");
+            String urlGambar = intent.getStringExtra("urlGambar");
 
 
             // Set TextView dengan data yang diterima
@@ -50,6 +54,14 @@ public class DetailKendaraan extends AppCompatActivity {
             tvJumlahPenumpang.setText(jumlahPenumpang+ " orang");
             tvJumlahKendaraan.setText("Jumlah " +jumlahKendaraan);
             tvDeskripsi.setText(deskripsi);
+
+            // Memuat gambar menggunakan Glide
+            RequestOptions requestOptions = new RequestOptions()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL).centerCrop(); // Opsional: Menggunakan cache untuk gambar yang dimuat
+            Glide.with(DetailKendaraan.this)
+                    .load(urlGambar)
+                    .apply(requestOptions)
+                    .into(imgKendaraan);
         }
 
         btBack.setOnClickListener(view -> {

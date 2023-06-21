@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bacground"
+    android:background="@color/white"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -92,15 +92,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nama Kendaraan"
-                    android:textColorHint="@color/kuning"
+                    android:textColorHint="@color/yellow"
                     android:textSize="10dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp">
+                    android:layout_marginRight="35dp"
+                    app:boxStrokeColor="@color/abuabu"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_namaKendaraan"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -110,13 +113,15 @@
                     android:textColorHint="@color/kuning"
                     android:textSize="10dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp">
+                    android:layout_marginRight="35dp"
+                    app:boxStrokeColor="@color/abuabu">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_tahunKendaraan"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -126,13 +131,15 @@
                     android:textColorHint="@color/kuning"
                     android:textSize="10dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp">
+                    android:layout_marginRight="35dp"
+                    app:boxStrokeColor="@color/abuabu">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_tarifKendaraan"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -142,12 +149,15 @@
                     android:textColorHint="@color/kuning"
                     android:textSize="10dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp">
+                    android:layout_marginRight="35dp"
+                    app:boxStrokeColor="@color/abuabu"
+                    app:endIconTint="@color/abuabu">
 
                     <AutoCompleteTextView
                         android:id="@+id/et_jenisMesin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/black"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,13 +169,15 @@
                     android:textColorHint="@color/kuning"
                     android:textSize="10dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp">
+                    android:layout_marginRight="35dp"
+                    app:boxStrokeColor="@color/abuabu">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_jumlahPenumpang"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -175,13 +187,15 @@
                     android:textColorHint="@color/kuning"
                     android:textSize="10dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp">
+                    android:layout_marginRight="35dp"
+                    app:boxStrokeColor="@color/abuabu">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_jumlahKendaraan"
                         android:inputType="number"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -191,7 +205,8 @@
                     android:textColorHint="@color/kuning"
                     android:textSize="10dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_marginRight="35dp">
+                    android:layout_marginRight="35dp"
+                    app:boxStrokeColor="@color/abuabu">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_deskripsiKendaraan"
@@ -200,7 +215,8 @@
                         android:maxLines="5"
                         android:imeOptions="actionDone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/card_upload_image"
