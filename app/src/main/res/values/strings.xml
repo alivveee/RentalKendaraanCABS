@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">CABS</string>
+    <string name="app_name">ProjekAkhir</string>
+    <string name="Term">By signing up, you are agree to our <u><font fgcolor ='#DAB600'>Terms &amp; Conditions</font></u> and <u><font fgcolor ='#DAB600'>Policies</font></u></string>
 </resources>
