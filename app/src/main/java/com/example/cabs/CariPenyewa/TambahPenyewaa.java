@@ -106,7 +106,7 @@ public class TambahPenyewaa extends AppCompatActivity {
         nama = findViewById(R.id.et_nama);
         alamat = findViewById(R.id.et_alamat);
         no_hp = findViewById(R.id.et_no_hp);
-        upload_image = findViewById(R.id.upload_imgg);
+        upload_image = findViewById(R.id.upload_image);
         submit = findViewById(R.id.bt_submit);
         il_nama = findViewById(R.id.input_nama);
         il_alamat = findViewById(R.id.input_alamat);

@@ -95,5 +95,9 @@ public class ModelPenyewa {
     public String getTotal() {
         return total;
     }
+
+    public String getKey() {
+        return key;
+    }
 }
 

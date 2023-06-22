@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,7 +32,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.example.cabs.CariKendaraan.EditKendaraan;
 import com.example.cabs.R;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -51,8 +55,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
     private List<ModelPenyewa> mListFull;
     Context mContext;
     private Activity activity;
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference kendaraanRef = FirebaseDatabase.getInstance().getReference().child("kendaraan");
+
 
 
     Dialog dialog;
@@ -61,6 +64,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
         this.mList = mList;
         this.mContext = mContext;
         this.mListFull = new ArrayList<>(mList);
+
     }
 
     @NonNull
@@ -135,6 +139,18 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.drawable.gambar).override(300, Target.SIZE_ORIGINAL).fitCenter())  // Placeholder image while loading
                 .into(holder.iv_kendaraan);
+        holder.bt_edit.setOnClickListener(v -> {
+            Intent editForm = new Intent(mContext, EditPenyewaa.class);
+            editForm.putExtra("key", data.getKey());
+            editForm.putExtra("Nama", data.getNama());
+            editForm.putExtra("Alamat", data.getAlamat());
+            editForm.putExtra("Nomor HP", data.getNo_hp());
+            editForm.putExtra("Tanggal", data.getTanggal());
+            editForm.putExtra("Nama Kendaraan", data.getNama_kendaraan());
+            editForm.putExtra("gambar", data.getUri());
+            editForm.putExtra("Total", data.getTotal());
+            mContext.startActivity(editForm);
+        });
 
 
         Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),android.R.anim.slide_in_left);
@@ -148,7 +164,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
                 intent.setData(Uri.parse("tel:"+phoneNumber));
                 if (ActivityCompat.checkSelfPermission(mContext,
                         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions((Activity) mContext, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                    ActivityCompat.requestPermissions((Activity) activity, new String[]{Manifest.permission.CALL_PHONE}, 1);
                     return;
                 }
                 mContext.startActivity(intent);
@@ -177,13 +193,16 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
         return mList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNama, tvTanggal,tvNamaKendaraan,tvTotal;
-        CardView cardItemKendaraan;
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView tvNama, tvTanggal,tvNamaKendaraan,tvTotal, Total;
+        TextInputEditText Tanggal, Nama, Alamat, No_HP;
+        ImageView bt_edit;
+        CardView cardItemKendaraan, bt_upload;
         LinearLayout item;
-        Button bt_dialog_call,bt_dialog_wa;
-
-        ImageView iv_kendaraan;
+        Button bt_dialog_call,bt_dialog_wa, Save;
+        AutoCompleteTextView NamaKendaraan;
+        TextInputLayout il_Nama, il_Tanggal, il_Alamat, il_NoHP;
+        ImageView iv_kendaraan, date, upload_image, click;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -193,9 +212,22 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
             item = itemView.findViewById(R.id.item);
             tvNamaKendaraan = itemView.findViewById(R.id.tv_namaKendaraan);
             tvTotal = itemView.findViewById(R.id.tv_harga);
+            No_HP = itemView.findViewById(R.id.edt_et_no_hp);
             iv_kendaraan = itemView.findViewById(R.id.iv_kendaraan);
+            Tanggal = itemView.findViewById(R.id.et_tanggal);
+            Nama = itemView.findViewById(R.id.et_nama);
+            Save = itemView.findViewById(R.id.bt_submit);
+            NamaKendaraan = itemView.findViewById(R.id.tv_merk_kendaraan);
+            bt_upload = itemView.findViewById(R.id.card_upload_image);
+            Total = itemView.findViewById(R.id.tv_total);
+            bt_edit = itemView.findViewById(R.id.click);
+            itemView.setOnClickListener(this);
 
 
+        }
+
+        @Override
+        public void onClick(View view) {
 
         }
     }

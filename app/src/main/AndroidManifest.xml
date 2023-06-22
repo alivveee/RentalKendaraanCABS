@@ -52,7 +52,7 @@
             android:name=".CariPenyewa.TambahPenyewaa"
             android:exported="false"/>
         <activity
-            android:name=".CariKendaraan.DetailKendaraan"
+            android:name=".CariPenyewa.EditPenyewaa"
             android:exported="false"/>
         <activity
             android:name=".MainActivity"
