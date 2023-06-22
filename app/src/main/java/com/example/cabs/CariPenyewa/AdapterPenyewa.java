@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.example.cabs.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,11 +48,12 @@ import java.util.List;
 
 public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHolder> {
     private List<ModelPenyewa> mList;
+    private List<ModelPenyewa> mListFull;
     Context mContext;
     private Activity activity;
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     DatabaseReference kendaraanRef = FirebaseDatabase.getInstance().getReference().child("kendaraan");
-    private List<ModelPenyewa> mListFull;
+
 
     Dialog dialog;
 
@@ -131,7 +133,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
                 .load(data.getUri())
                 .apply(new RequestOptions()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .placeholder(R.drawable.gambar))  // Placeholder image while loading
+                        .placeholder(R.drawable.gambar).override(300, Target.SIZE_ORIGINAL).fitCenter())  // Placeholder image while loading
                 .into(holder.iv_kendaraan);
 
 
@@ -196,6 +198,11 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
 
 
         }
+    }
+
+    public void filterList(List<ModelPenyewa> filteredList) {
+        mList = filteredList;
+        notifyDataSetChanged();
     }
 
 

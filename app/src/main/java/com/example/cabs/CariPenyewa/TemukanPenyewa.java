@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class TemukanPenyewa extends AppCompatActivity{
+public class TemukanPenyewa extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     ImageView tambah_penyewa;
     AdapterPenyewa adapterPenyewa;
@@ -40,6 +40,9 @@ public class TemukanPenyewa extends AppCompatActivity{
 
 
     Context mContext;
+
+    private List<ModelPenyewa> dataList;
+    private List<ModelPenyewa> filteredList;
 
 
     protected void onCreate( Bundle savedInstanceState) {
@@ -68,10 +71,26 @@ public class TemukanPenyewa extends AppCompatActivity{
         rvPenyewa.setItemAnimator(new DefaultItemAnimator());
 
         tampilData();
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterRecyclerView(newText);
+                return true;
+            }
+        });
 
     }
 
     private void tampilData() {
+        filteredList = new ArrayList<>();
+        if (listPenyewa != null) {
+            filteredList.addAll(listPenyewa);
+        }
         database.child(user.getUid()).child("Penyewa").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -97,24 +116,40 @@ public class TemukanPenyewa extends AppCompatActivity{
 
     }
 
-    private void filterRecyclerView(String filterText) {
-        List<ModelPenyewa> filteredList = new ArrayList<>();
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
 
-        for (ModelPenyewa item : listPenyewa) {
-            if (item.getTanggal().equals(filterText)) {
-                filteredList.add(item);
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        filterRecyclerView(newText);
+        return true;
+    }
+
+    private void filterRecyclerView(String filterText) {
+        filteredList.clear();
+
+        if (filterText.isEmpty()) {
+            filteredList.addAll(listPenyewa);
+        } else {
+            String filterPattern = filterText.toLowerCase().trim();
+
+            for (ModelPenyewa penyewa : listPenyewa) {
+                if (penyewa.getTanggal().toLowerCase().contains(filterPattern)) {
+                    filteredList.add(penyewa);
+                }else if (penyewa.getNama().toLowerCase().contains(filterPattern)) {
+                    filteredList.add(penyewa);
+                }else if (penyewa.getNama_kendaraan().toLowerCase().contains(filterPattern)) {
+                    filteredList.add(penyewa);
+                }else if (penyewa.getTotal().toLowerCase().contains(filterPattern)) {
+                    filteredList.add(penyewa);
+                }
             }
         }
 
-        adapterPenyewa = new AdapterPenyewa(filteredList, TemukanPenyewa.this);
-        rvPenyewa.setAdapter(adapterPenyewa);
+        adapterPenyewa.filterList(filteredList);
     }
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        String filterText = s.toString().trim(); // Dapatkan teks filter dan hapus spasi di awal dan akhir
 
-        // Panggil metode filterRecyclerView untuk menerapkan filter pada RecyclerView
-        filterRecyclerView(filterText);
-    }
 
 
 
