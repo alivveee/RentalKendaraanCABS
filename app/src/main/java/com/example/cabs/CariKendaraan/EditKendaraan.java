@@ -46,7 +46,7 @@ import java.util.UUID;
 
 public class EditKendaraan extends AppCompatActivity {
     EditText edtnamaKendaraan, edttahunKendaraan, edttarifKendaraan
-            , edtjenisMesin, edtjumlahPenumpang, edtjumlahKendaraan, edtdeskripsiKendaraan;
+            , edtjumlahPenumpang, edtjumlahKendaraan, edtdeskripsiKendaraan;
     CardView btUpload;
     ImageView uploadImage;
     AutoCompleteTextView etJenisMesin;
@@ -57,6 +57,7 @@ public class EditKendaraan extends AppCompatActivity {
     private static final int RC_Take_From_Gallery = 1;
     private StorageReference mStorageRef;
     String currentPhotoPath, urlGambar;
+    Integer UPLOAD_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,17 +88,17 @@ public class EditKendaraan extends AppCompatActivity {
         String nama = getData.getStringExtra("Nama");
         String tahun = getData.getStringExtra("Tahun");
         String tarif = getData.getStringExtra("Tarif");
-//        String jenis = getData.getStringExtra("Jenis");
+        String jenis = getData.getStringExtra("JenisMesin");
         String jumlahpenumpang = getData.getStringExtra("Jumlah Penumpang");
         String jumlahkendaraan = getData.getStringExtra("Jumlah Kendaraan");
         String deskripsi = getData.getStringExtra("Deskripsi");
-        String gambar = getData.getStringExtra("gambar");
-        Picasso.get().load(gambar).into(uploadImage);
+        urlGambar = getData.getStringExtra("gambar");
+        Picasso.get().load(urlGambar).into(uploadImage);
 
         edtnamaKendaraan.setText(nama);
         edttahunKendaraan.setText(tahun);
         edttarifKendaraan.setText(tarif);
-//        edtjenisMesin.setText(jenis);
+        etJenisMesin.setText(jenis);
         edtjumlahPenumpang.setText(jumlahpenumpang);
         edtjumlahKendaraan.setText(jumlahkendaraan);
         edtdeskripsiKendaraan.setText(deskripsi);
@@ -132,7 +133,11 @@ public class EditKendaraan extends AppCompatActivity {
                  edtnamaKendaraan.setError("Masukkan nama kendaraan");
              } else if (tarifKendaraan.isEmpty()) {
                  edttarifKendaraan.setError("Masukkan tarif kendaraan");
-             }else {
+             } else if (key == null) {
+                 Toast.makeText(this, "Harap upload gambar", Toast.LENGTH_SHORT).show();
+             } else if (UPLOAD_CODE == 0) {
+                 Toast.makeText(this, "Harap tunggu gambar terupload", Toast.LENGTH_SHORT).show();
+             }else{
                  database.child(user.getUid()).child("Kendaraan").child(key).setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
                      @Override
                      public void onSuccess(Void unused) {
@@ -262,6 +267,7 @@ public class EditKendaraan extends AppCompatActivity {
                 Toast.makeText(EditKendaraan.this,
                         "can't upload Image, " + exception.getMessage(),
                         Toast.LENGTH_LONG).show();
+                UPLOAD_CODE = 0;
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -278,7 +284,7 @@ public class EditKendaraan extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         // Mendapatkan URL unduhan gambar
                         urlGambar = uri.toString();
-
+                        UPLOAD_CODE = 99;
                     }
                 });
             }

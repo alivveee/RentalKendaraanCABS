@@ -56,6 +56,7 @@ public class TambahKendaraan extends AppCompatActivity {
     private static final int RC_Take_From_Gallery = 1;
     private StorageReference mStorageRef;
     String currentPhotoPath, urlGambar, key;
+    Integer UPLOAD_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +111,11 @@ public class TambahKendaraan extends AppCompatActivity {
                  etNamaKendaraan.setError("Masukkan nama kendaraan");
              } else if (tarifKendaraan.isEmpty()) {
                  etTarifKendaraan.setError("Masukkan tarif kendaraan");
-             }else {
+             } else if (key == null) {
+                 Toast.makeText(TambahKendaraan.this, "Harap upload gambar", Toast.LENGTH_SHORT).show();
+             } else if (UPLOAD_CODE == 0) {
+                 Toast.makeText(this, "Harap tunggu gambar terupload", Toast.LENGTH_SHORT).show();
+             } else {
                  database.child(user.getUid()).child("Kendaraan").child(key).setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
                      @Override
                      public void onSuccess(Void unused) {
@@ -239,6 +244,7 @@ public class TambahKendaraan extends AppCompatActivity {
                 Toast.makeText(TambahKendaraan.this,
                         "can't upload Image, " + exception.getMessage(),
                         Toast.LENGTH_LONG).show();
+                UPLOAD_CODE = 0;
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -255,7 +261,7 @@ public class TambahKendaraan extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         // Mendapatkan URL unduhan gambar
                         urlGambar = uri.toString();
-
+                        UPLOAD_CODE = 99;
                     }
                 });
             }

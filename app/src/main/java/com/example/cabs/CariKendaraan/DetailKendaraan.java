@@ -43,7 +43,7 @@ public class DetailKendaraan extends AppCompatActivity {
             String jumlahPenumpang = intent.getStringExtra("jumlahPenumpang");
             String jumlahKendaraan = intent.getStringExtra("jumlahKendaraan");
             String deskripsi = intent.getStringExtra("deskripsi");
-            String urlGambar = intent.getStringExtra("urlGambar");
+            String urlGambar = intent.getStringExtra("url");
 
 
             // Set TextView dengan data yang diterima
@@ -60,7 +60,7 @@ public class DetailKendaraan extends AppCompatActivity {
                     .diskCacheStrategy(DiskCacheStrategy.ALL).centerCrop(); // Opsional: Menggunakan cache untuk gambar yang dimuat
             Glide.with(DetailKendaraan.this)
                     .load(urlGambar)
-                    .apply(requestOptions)
+                    .apply(requestOptions).centerCrop()
                     .into(imgKendaraan);
         }
 

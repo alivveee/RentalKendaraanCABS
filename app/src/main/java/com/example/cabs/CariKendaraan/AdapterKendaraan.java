@@ -68,7 +68,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
                 .diskCacheStrategy(DiskCacheStrategy.ALL); // Opsional: Menggunakan cache untuk gambar yang dimuat
         Glide.with(activity)
                 .load(data.getUrlGambar())
-                .apply(requestOptions)
+                .apply(requestOptions).centerCrop()
                 .into(holder.gambarKendaraan);
 
         holder.btDelete.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +106,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
             editForm.putExtra("Nama", data.getNamaKendaraan());
             editForm.putExtra("Tahun", data.getTahunKendaraan());
             editForm.putExtra("Tarif", data.getTarifKendaraan());
-            editForm.putExtra("Jenis", data.getJenisMesin());
+            editForm.putExtra("JenisMesin", data.getJenisMesin());
             editForm.putExtra("Jumlah Penumpang", data.getJumlahPenumpang());
             editForm.putExtra("Jumlah Kendaraan", data.getJumlahKendaraan());
             editForm.putExtra("Deskripsi", data.getDeskripsi());
@@ -169,6 +169,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
             intent.putExtra("jumlahPenumpang", data.getJumlahPenumpang());
             intent.putExtra("jumlahKendaraan", data.getJumlahKendaraan());
             intent.putExtra("deskripsi", data.getDeskripsi());
+            intent.putExtra("url", data.getUrlGambar());
 
             activity.startActivity(intent);
             }
