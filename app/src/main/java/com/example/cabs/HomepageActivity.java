@@ -21,8 +21,6 @@ public class HomepageActivity extends AppCompatActivity {
     TextView displayname;
 
     FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
-    FirebaseUser user = firebaseauth.getCurrentUser();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +36,10 @@ public class HomepageActivity extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomepageActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
+                firebaseauth.signOut();
+                Intent logout = new Intent(HomepageActivity.this, MainActivity.class);
+                logout.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(logout);
             }
         });
 

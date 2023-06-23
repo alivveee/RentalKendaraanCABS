@@ -38,10 +38,6 @@ public class TemukanPenyewa extends AppCompatActivity implements SearchView.OnQu
 
     SearchView search;
 
-
-    Context mContext;
-
-    private List<ModelPenyewa> dataList;
     private List<ModelPenyewa> filteredList;
 
 
@@ -62,7 +58,6 @@ public class TemukanPenyewa extends AppCompatActivity implements SearchView.OnQu
             public void onClick(View view) {
                 Intent intent = new Intent(TemukanPenyewa.this,TambahPenyewaa.class);
                 startActivity(intent);
-                finish();
             }
         });
 

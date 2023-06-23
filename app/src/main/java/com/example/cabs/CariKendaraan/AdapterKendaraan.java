@@ -75,7 +75,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
             @Override
             public void onClick(View view) {
                 // Hapus item dari database menggunakan referensi
-                database.child("Kendaraan").child(data.getKey()).removeValue()
+                database.child(user.getUid()).child("Kendaraan").child(data.getKey()).removeValue()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
