@@ -29,4 +29,10 @@
         <item name="stGravity">top</item> top or center
         <item name="stRadius">8dp</item>
     </style>
+
+    <style name="ShapeAppearanceOverlay.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item> <!-- Menggunakan sudut lengkung -->
+        <item name="cornerSize">8dp</item> <!-- Ukuran sudut lengkung (sesuaikan dengan keinginan Anda) -->
+    </style>
+
 </resources>

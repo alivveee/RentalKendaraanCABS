@@ -42,14 +42,14 @@
                     />
 
                 <TextView
-                    android:id="@+id/tambah"
+                    android:id="@+id/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="35dp"
                     android:layout_marginTop="45dp"
                     android:paddingEnd="200dp"
                     android:fontFamily="@font/intersemibold"
-                    android:text="Tambah Penyewa"
+                    android:text="Edit Penyewa"
                     android:textColor="@color/kuning"
                     android:textSize="32dp"
                     />
@@ -137,7 +137,7 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_nama"
+                            android:id="@+id/editinput_nama"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
@@ -157,11 +157,11 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_alamat"
+                            android:id="@+id/editinput_alamat"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/input_nama"
+                            android:layout_below="@+id/editinput_nama"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="0dp"
 
@@ -178,21 +178,21 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_no_hp"
+                            android:id="@+id/editinput_no_hp"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/input_alamat"
+                            android:layout_below="@+id/editinput_alamat"
                             android:layout_centerHorizontal="true"
                             android:hint="Nomor Hp"
                             android:textColorHint="@color/kuning"
                             android:textSize="10dp"
                             app:hintTextColor="@color/kuning"
-                            app:layout_constraintTop_toBottomOf="@+id/input_alamat"
+                            app:layout_constraintTop_toBottomOf="@+id/editinput_alamat"
                             app:errorEnabled="true">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/et_no_hp"
+                                android:id="@+id/edt_et_no_hp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="phone"
@@ -207,7 +207,7 @@
                             app:cardElevation="10dp"
                             android:layout_marginBottom="20dp"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@+id/input_no_hp"
+                            android:layout_below="@+id/editinput_no_hp"
                             >
 
                             <LinearLayout
@@ -218,7 +218,7 @@
                                 android:padding="10dp">
 
                                 <ImageView
-                                    android:id="@+id/upload_image"
+                                    android:id="@+id/edt_upload_image"
                                     android:layout_width="wrap_content"
                                     android:layout_height="150dp"
                                     android:src="@drawable/upload_image">
@@ -268,7 +268,7 @@
 
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_merk_kendaraan"
+                            android:id="@+id/editinput_merk_kendaraan"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
@@ -290,12 +290,12 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/input_tanggal"
+                            android:id="@+id/editinput_tanggal"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:layout_below="@+id/input_merk_kendaraan"
+                            android:layout_below="@+id/editinput_merk_kendaraan"
                             android:hint="Pilih Tanggal Disewa"
                             android:textColorHint="@color/kuning"
                             android:textSize="10dp"

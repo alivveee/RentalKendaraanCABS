@@ -1,5 +1,7 @@
 package com.example.cabs.CariPenyewa;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,8 +31,9 @@ import androidx.core.content.FileProvider;
 import androidx.core.util.Pair;
 
 import com.bumptech.glide.Glide;
-
-import android.Manifest;
+import com.example.cabs.CariKendaraan.EditKendaraan;
+import com.example.cabs.CariKendaraan.ModelKendaraan;
+import com.example.cabs.CariKendaraan.TemukanKendaraan;
 import com.example.cabs.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,6 +53,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -64,25 +68,25 @@ import java.util.concurrent.TimeUnit;
 
 import io.github.muddz.styleabletoast.StyleableToast;
 
-public class TambahPenyewaa extends AppCompatActivity {
+public class EditPenyewaa extends AppCompatActivity {
     List<String> itemList;
     ArrayAdapter<String> adapterItems;
 
-    AutoCompleteTextView autoCompleteTextView;
+    AutoCompleteTextView NamaKendaraan;
     ImageView date;
-    TextInputEditText tanggal, nama, alamat, no_hp;
-    TextView total;
+    TextInputEditText Tanggal, Nama, Alamat, No_HP;
+    TextView Total;
 
-    TextInputLayout il_nama, il_tanggal, il_alamat, il_nohp;
+    TextInputLayout il_Nama, il_Tanggal, il_Alamat, il_NoHP;
 
     DatabaseReference database;
     FirebaseUser user;
 
     ImageView upload_image;
-    Button submit;
+    Button Save;
 
     CardView bt_upload;
-    String key;
+
 
     private static final int RC_Take_Photo = 0;
     private static final int RC_Take_From_Gallery = 1;
@@ -91,36 +95,88 @@ public class TambahPenyewaa extends AppCompatActivity {
     private StorageReference mStorageRef;
     String urlGambar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tambah_penyewa);
+        setContentView(R.layout.edit_penyewa);
 
         database = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         FirebaseDatabase database_1 = FirebaseDatabase.getInstance();
-        DatabaseReference kendaraanRef = database_1.getReference().child(user.getUid()).child("Kendaraan");
 
-        tanggal = findViewById(R.id.et_tanggal);
-        nama = findViewById(R.id.et_nama);
-        alamat = findViewById(R.id.et_alamat);
-        no_hp = findViewById(R.id.et_no_hp);
-        upload_image = findViewById(R.id.upload_image);
-        submit = findViewById(R.id.bt_submit);
-        il_nama = findViewById(R.id.input_nama);
-        il_alamat = findViewById(R.id.input_alamat);
-        il_nohp = findViewById(R.id.input_no_hp);
-        il_tanggal = findViewById(R.id.input_tanggal);
-        autoCompleteTextView = findViewById(R.id.tv_merk_kendaraan);
+        Tanggal = findViewById(R.id.et_tanggal);
+        Nama = findViewById(R.id.et_nama);
+        Alamat = findViewById(R.id.et_alamat);
+        No_HP = findViewById(R.id.edt_et_no_hp);
+        upload_image = findViewById(R.id.edt_upload_image);
+        Save = findViewById(R.id.bt_submit);
+        il_Nama = findViewById(R.id.editinput_nama);
+        il_Alamat = findViewById(R.id.editinput_alamat);
+        il_NoHP = findViewById(R.id.editinput_no_hp);
+        il_Tanggal = findViewById(R.id.editinput_tanggal);
+        NamaKendaraan = findViewById(R.id.tv_merk_kendaraan);
         bt_upload = findViewById(R.id.card_upload_image);
-        total = findViewById(R.id.tv_total);
+        Total = findViewById(R.id.tv_total);
 
         fetchDataFromFirebase(); // Panggil method untuk mengambil data dari Firebase
 
-        TextInputEditText textInputEditText = tanggal;
+        TextInputEditText textInputEditText = Tanggal;
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        Intent getData = getIntent();
+        String key = getData.getStringExtra("key");
+        String nama = getData.getStringExtra("Nama");
+        String alamat = getData.getStringExtra("Alamat");
+        String no_Hp = getData.getStringExtra("Nomor HP");
+//        String jenis = getData.getStringExtra("Jenis");
+        String tanggal = getData.getStringExtra("Tanggal");
+        String namakendaraan = getData.getStringExtra("Nama Kendaraan");
+        String total = getData.getStringExtra("Total");
+        String gambar = getData.getStringExtra("gambar");
+        Picasso.get().load(gambar).into(upload_image);
+
+        Nama.setText(nama);
+        Alamat.setText(alamat);
+        No_HP.setText(no_Hp);
+//        edtjenisMesin.setText(jenis);
+        Tanggal.setText(tanggal);
+        Total.setText(total);
+        NamaKendaraan.setText(namakendaraan);
+
+        Save.setOnClickListener(view -> {
+            String sNo_hp = No_HP.getText().toString();
+            String sTotal = Total.getText().toString();
+            String sNama = Nama.getText().toString();
+            String sTanggal = Tanggal.getText().toString();
+            String sAlamat = Alamat.getText().toString();
+            String sNamaKendaraan = NamaKendaraan.getText().toString();
+
+
+            ModelPenyewa model = new ModelPenyewa( sNama, sNo_hp, sAlamat, sNamaKendaraan, sTanggal, sTotal, urlGambar);
+            if (sNama.isEmpty()){
+                Nama.setError("Masukkan nama");
+            } else if (sTanggal.isEmpty()) {
+                Tanggal.setError("Masukkan tanggal sewa");
+            }else {
+                database.child(user.getUid()).child("Penyewa").child(key).setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(EditPenyewaa.this, "data berhasil disimpan", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(EditPenyewaa.this, TemukanPenyewa.class));
+                        finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(EditPenyewaa.this, "gagal menambah data, silahkan coba kembali", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
         StorageReference fotoRef = mStorageRef.child(user.getUid() + "/image");
         Task<ListResult> listPageTask = fotoRef.list(1);
         listPageTask.addOnSuccessListener(new OnSuccessListener<ListResult>() {
@@ -128,11 +184,11 @@ public class TambahPenyewaa extends AppCompatActivity {
             public void onSuccess(ListResult listResult) {
                 List<StorageReference> items = listResult.getItems();
                 if(!items.isEmpty()) {
-                    Toast.makeText(TambahPenyewaa.this, "Loading Foto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditPenyewaa.this, "Loading Foto", Toast.LENGTH_SHORT).show();
                     items.get(0).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            Glide.with(TambahPenyewaa.this)
+                            Glide.with(EditPenyewaa.this)
                                     .load(uri)
                                     .into(upload_image);
 
@@ -140,11 +196,11 @@ public class TambahPenyewaa extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(TambahPenyewaa.this, "Upload Image Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditPenyewaa.this, "Upload Image Failed", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }else {
-                    Toast.makeText(TambahPenyewaa.this, "No Image Selected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditPenyewaa.this, "No Image Selected", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -158,11 +214,11 @@ public class TambahPenyewaa extends AppCompatActivity {
                         String[] Permissions = {Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE};
                         requestPermissions(Permissions,100);
                     }else {
-                        selectImage(TambahPenyewaa.this);
+                        selectImage(EditPenyewaa.this);
                     }
 
                 }else {
-                    selectImage(TambahPenyewaa.this);
+                    selectImage(EditPenyewaa.this);
                 }
             }
         });
@@ -172,11 +228,11 @@ public class TambahPenyewaa extends AppCompatActivity {
                 .setSelection(Pair.create(MaterialDatePicker.thisMonthInUtcMilliseconds(),
                         MaterialDatePicker.todayInUtcMilliseconds())).build();
 
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        NamaKendaraan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String item = adapterView.getItemAtPosition(position).toString();
-                StyleableToast.makeText(TambahPenyewaa.this,item + " dipilih",R.style.mytoast).show();
+                StyleableToast.makeText(EditPenyewaa.this,item + " dipilih",R.style.mytoast).show();
 
                 calculateTotal();
             }
@@ -184,7 +240,7 @@ public class TambahPenyewaa extends AppCompatActivity {
 
         });
 
-        tanggal.setOnClickListener(new View.OnClickListener() {
+        Tanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 datePicker.show(getSupportFragmentManager(), "Material_Range");
@@ -192,7 +248,7 @@ public class TambahPenyewaa extends AppCompatActivity {
                     @Override
                     public void onPositiveButtonClick(Object selection) {
                         textInputEditText.setText(datePicker.getHeaderText());
-                        StyleableToast.makeText(TambahPenyewaa.this, "tanggal disewa dari " + datePicker.getHeaderText(), R.style.mytoast).show();
+                        StyleableToast.makeText(EditPenyewaa.this, "tanggal disewa dari " + datePicker.getHeaderText(), R.style.mytoast).show();
                         calculateTotal();
                     }
 
@@ -203,48 +259,48 @@ public class TambahPenyewaa extends AppCompatActivity {
 
 
 
-        submit.setOnClickListener(new View.OnClickListener() {
+        Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 calculateTotal();
-                String sNama = nama.getText().toString();
-                String sAlamat = alamat.getText().toString();
-                String sTanggal = tanggal.getText().toString();
-                String sNohp = no_hp.getText().toString();
-                String sNamaKendaraan = autoCompleteTextView.getText().toString();
-                String sTotal = total.getText().toString();
+                String sNama = Nama.getText().toString();
+                String sAlamat = Alamat.getText().toString();
+                String sTanggal = Tanggal.getText().toString();
+                String sNohp = No_HP.getText().toString();
+                String sNamaKendaraan = NamaKendaraan.getText().toString();
+                String sTotal = Total.getText().toString();
 
 
 
 
                 if (TextUtils.isEmpty(sNama)) {
-                    il_nama.setError("Enter Customer Name!");
+                    il_Nama.setError("Enter Customer Name!");
                     return;
                 } else {
-                    il_nama.setError("");
-                    il_nama.setHelperText("");
+                    il_Nama.setError("");
+                    il_Nama.setHelperText("");
                 }
 
                 if (TextUtils.isEmpty(sAlamat)) {
-                    il_alamat.setError("Enter Customer Address!");
+                    il_Alamat.setError("Enter Customer Address!");
                     return;
                 } else {
-                    il_alamat.setError("");
-                    il_alamat.setHelperText("");
+                    il_Alamat.setError("");
+                    il_Alamat.setHelperText("");
                 }
                 if (TextUtils.isEmpty(sTanggal)) {
-                    il_tanggal.setError("Enter Date!");
+                    il_Tanggal.setError("Enter Date!");
                     return;
                 } else {
-                    il_tanggal.setError("");
-                    il_tanggal.setHelperText("");
+                    il_Tanggal.setError("");
+                    il_Tanggal.setHelperText("");
                 }
                 if (TextUtils.isEmpty(sNohp)) {
-                    il_nohp.setError("Enter Customer Phone Number!");
+                    il_NoHP.setError("Enter Customer Phone Number!");
                     return;
                 } else {
-                    il_nohp.setError("");
-                    il_nohp.setHelperText("");
+                    il_NoHP.setError("");
+                    il_NoHP.setHelperText("");
                 }
 
 
@@ -254,14 +310,14 @@ public class TambahPenyewaa extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(TambahPenyewaa.this, "Data Saved", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(TambahPenyewaa.this, TemukanPenyewa.class));
+                                Toast.makeText(EditPenyewaa.this, "Data Saved", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(EditPenyewaa.this, TemukanPenyewa.class));
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(TambahPenyewaa.this, "Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EditPenyewaa.this, "Failed", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -273,7 +329,7 @@ public class TambahPenyewaa extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode,@NonNull String[] permissions,@NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode,permissions,grantResults);
         if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED) {
-            selectImage(TambahPenyewaa.this);
+            selectImage(EditPenyewaa.this);
         }
     }
 
@@ -298,7 +354,7 @@ public class TambahPenyewaa extends AppCompatActivity {
                         }
 
                         if(photofile != null) {
-                            Uri photoURI = FileProvider.getUriForFile(TambahPenyewaa.this,
+                            Uri photoURI = FileProvider.getUriForFile(EditPenyewaa.this,
                                     "com.example.myapplication",
                                     photofile);
                             takePicture.putExtra(MediaStore.EXTRA_OUTPUT,photoURI);
@@ -308,7 +364,7 @@ public class TambahPenyewaa extends AppCompatActivity {
                     }
 
                 }else if(options[item].equals("Choose From Gallery")) {
-                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(pickPhoto,RC_Take_From_Gallery);
                 }else if (options[item].equals("Cancel")) {
                     dialog.dismiss();
@@ -388,12 +444,13 @@ public class TambahPenyewaa extends AppCompatActivity {
     private void uploadToStorage(Uri file) {
         UploadTask uploadTask;
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        String key;
         key = UUID.randomUUID().toString();
 
         // Buat path di Firebase Storage
         StorageReference fotoRef = mStorageRef.child(user.getUid() + "/penyewa/" + key);
         uploadTask = fotoRef.putFile(file);
-        Toast.makeText(TambahPenyewaa.this,
+        Toast.makeText(EditPenyewaa.this,
                 "uploading Image",
                 Toast.LENGTH_SHORT).show();
 
@@ -402,7 +459,7 @@ public class TambahPenyewaa extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle unsuccessful uploads
-                Toast.makeText(TambahPenyewaa.this,
+                Toast.makeText(EditPenyewaa.this,
                         "can't upload Image, " + exception.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
@@ -411,7 +468,7 @@ public class TambahPenyewaa extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                 // ...
-                Toast.makeText(TambahPenyewaa.this,
+                Toast.makeText(EditPenyewaa.this,
                         "Image Uploaded",
                         Toast.LENGTH_SHORT).show();
                 // Mendapatkan URL unduhan gambar
@@ -482,14 +539,14 @@ public class TambahPenyewaa extends AppCompatActivity {
     }
 
     private void setupAutoCompleteTextView(List<String> itemList) {
-        adapterItems = new ArrayAdapter<>(TambahPenyewaa.this, R.layout.list_item_merk_kendaraan, itemList);
-        autoCompleteTextView.setAdapter(adapterItems);
+        adapterItems = new ArrayAdapter<>(EditPenyewaa.this, R.layout.list_item_merk_kendaraan, itemList);
+        NamaKendaraan.setAdapter(adapterItems);
     }
 
     private void calculateTotal() {
         Log.d("MyApp", "calculateTotal() called");
-        String selectedKendaraan = autoCompleteTextView.getText().toString();
-        String selectedTanggal = tanggal.getText().toString();
+        String selectedKendaraan = NamaKendaraan.getText().toString();
+        String selectedTanggal = Tanggal.getText().toString();
         Log.d("MyApp", "selectedKendaraan: " + selectedKendaraan);
         Log.d("MyApp", "selectedTanggal: " + selectedTanggal);
 
@@ -592,7 +649,7 @@ public class TambahPenyewaa extends AppCompatActivity {
             String formattedTotalHarga = rupiahFormat.format(totalHarga);
 
             Log.d("MyApp", "totalHarga: " + formattedTotalHarga);
-            total.setText(formattedTotalHarga);
+            Total.setText(formattedTotalHarga);
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("MyApp", "Error: " + e.getMessage());

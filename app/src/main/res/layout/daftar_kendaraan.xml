@@ -36,25 +36,31 @@
             android:background="@drawable/logo" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginTop="127dp"
-            android:paddingStart="15dp">
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:id="@+id/input_alamat"
+            >
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="310dp"
-                android:layout_height="45dp"
-                android:hint="cari"
-                android:textSize="10dp"
-                app:boxStrokeWidth="0dp"
-                android:background="@drawable/rounded_background">
-                <EditText
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <SearchView
+                    android:id="@+id/search_kendaraan"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </EditText>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search"
+                    app:searchIcon="@android:drawable/ic_search_category_default"
+                    android:background="@drawable/rounded_search_view" />
+
+                <!-- Tempatkan komponen tampilan lainnya di sini -->
+
+            </LinearLayout>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -64,7 +70,7 @@
 
         </LinearLayout>
         <ImageView
-            android:id="@+id/bt_back"
+            android:id="@+id/bt_backedt"
             android:layout_width="53dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
