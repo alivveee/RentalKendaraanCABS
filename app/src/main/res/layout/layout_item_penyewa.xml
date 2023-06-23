@@ -92,6 +92,20 @@
 
             </ImageView>
 
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="320dp"
+                android:layout_marginTop="35dp"
+                android:src="@drawable/bt_delete">
+
+            </ImageView>
+
+
+
+
+
 
 
             <LinearLayout
