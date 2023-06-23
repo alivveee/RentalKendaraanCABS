@@ -56,8 +56,8 @@ public class EditKendaraan extends AppCompatActivity {
     private static final int RC_Take_Photo = 0;
     private static final int RC_Take_From_Gallery = 1;
     private StorageReference mStorageRef;
-    String currentPhotoPath, urlGambar;
-    Integer UPLOAD_CODE = 0;
+    String currentPhotoPath, urlGambar, key;
+    Integer UPLOAD_CODE = 99;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class EditKendaraan extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         Intent getData = getIntent();
-        String key = getData.getStringExtra("key");
+        key = getData.getStringExtra("key");
         String nama = getData.getStringExtra("Nama");
         String tahun = getData.getStringExtra("Tahun");
         String tarif = getData.getStringExtra("Tarif");
@@ -111,10 +111,11 @@ public class EditKendaraan extends AppCompatActivity {
                     requestPermissions(Permisions, 100);
                 } else {
                     selectImage(EditKendaraan.this);
+                    UPLOAD_CODE = 0;
                 }
             } else {
                 selectImage(EditKendaraan.this);
-
+                UPLOAD_CODE = 0;
             }
         });
 
@@ -133,8 +134,6 @@ public class EditKendaraan extends AppCompatActivity {
                  edtnamaKendaraan.setError("Masukkan nama kendaraan");
              } else if (tarifKendaraan.isEmpty()) {
                  edttarifKendaraan.setError("Masukkan tarif kendaraan");
-             } else if (key == null) {
-                 Toast.makeText(this, "Harap upload gambar", Toast.LENGTH_SHORT).show();
              } else if (UPLOAD_CODE == 0) {
                  Toast.makeText(this, "Harap tunggu gambar terupload", Toast.LENGTH_SHORT).show();
              }else{
@@ -249,8 +248,6 @@ public class EditKendaraan extends AppCompatActivity {
     private void uploadToStorage(Uri file) {
         UploadTask uploadTask;
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        String key;
-        key = UUID.randomUUID().toString();
 
         // Buat path di Firebase Storage
         StorageReference fotoRef = mStorageRef.child(user.getUid() + "/kendaraan/" + key);
