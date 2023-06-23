@@ -17,6 +17,7 @@ public class ModelKendaraan {
         this.jumlahPenumpang = jumlahPenumpang;
         this.jumlahKendaraan = jumlahKendaraan;
         this.deskripsi = deskripsi;
+
     }
 
     public String getNamaKendaraan() {
