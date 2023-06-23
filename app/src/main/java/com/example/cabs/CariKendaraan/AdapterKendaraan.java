@@ -1,5 +1,6 @@
 package com.example.cabs.CariKendaraan;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,8 +22,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.cabs.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
@@ -29,6 +37,9 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
     private List<ModelKendaraan> mList;
     private Context context;
     private Activity activity;
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    StorageReference storage = FirebaseStorage.getInstance().getReference();
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     public AdapterKendaraan(List<ModelKendaraan> mList, Activity activity, Context context) {
@@ -46,7 +57,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterKendaraan.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterKendaraan.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         final ModelKendaraan data = mList.get(position);
 
         holder.tvNamaKendaraan.setText(data.getNamaKendaraan());
@@ -59,6 +70,35 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
                 .load(data.getUrlGambar())
                 .apply(requestOptions)
                 .into(holder.gambarKendaraan);
+
+        holder.btDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Hapus item dari database menggunakan referensi
+                database.child("Kendaraan").child(data.getKey()).removeValue()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // Item berhasil dihapus dari database
+                                Toast.makeText(activity, "Item dihapus", Toast.LENGTH_SHORT).show();
+
+                                mList.remove(position);
+                                notifyDataSetChanged();
+
+                                // hapus gambar dari storage
+                                StorageReference fileRef = storage.child(user.getUid()).child("kendaraan").child(data.getKey());
+                                fileRef.delete();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Terjadi kesalahan saat menghapus item dari database
+                                Toast.makeText(activity, "Gagal menghapus item", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
 
         holder.bteditt.setOnClickListener(v -> {
             Intent editForm = new Intent(activity, EditKendaraan.class);
@@ -85,7 +125,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
         TextView tvNamaKendaraan, tvTarifKendaraan;
         EditText edtnamaKendaraan, edttahunKendaraan, edttarifKendaraan
             , edtjenisMesin, edtjumlahPenumpang, edtjumlahKendaraan, edtdeskripsiKendaraan; ;
-        ImageView gambarKendaraan, uploadImage,bteditt;
+        ImageView gambarKendaraan, uploadImage,bteditt, btDelete;
         AutoCompleteTextView etJenisMesin;
         Button btsave;
         CardView cardItemKendaraan, btUpload;
@@ -108,6 +148,9 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
             btUpload = itemView.findViewById(R.id.card_upload_image);
             uploadImage = itemView.findViewById(R.id.upload_imgg);
             bteditt = itemView.findViewById(R.id.bt_editt);
+            btDelete = itemView.findViewById(R.id.bt_delete);
+
+
             itemView.setOnClickListener(this);
         }
 
