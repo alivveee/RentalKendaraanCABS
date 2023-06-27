@@ -4,9 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.cabs.CariPenyewa.ModelPenyewa;
 import com.example.cabs.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,10 +35,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyViewHolder> {
     private List<ModelKendaraan> mList;
+    private List<ModelKendaraan> mListFull;
     private Context context;
     private Activity activity;
 
@@ -45,6 +51,7 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
     public AdapterKendaraan(List<ModelKendaraan> mList, Activity activity, Context context) {
         this.mList = mList;
         this.activity = activity;
+        this.mListFull = new ArrayList<>(mList);
         this.context = context; // Inisialisasi objek context
     }
 
@@ -87,7 +94,20 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
 
                                 // hapus gambar dari storage
                                 StorageReference fileRef = storage.child(user.getUid()).child("kendaraan").child(data.getKey());
-                                fileRef.delete();
+                                Log.d("hapus", "onSuccess: " + data.getKey());
+                                fileRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        // Gambar berhasil dihapus dari storage
+                                        Toast.makeText(activity, "Gambar dihapus", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Terjadi kesalahan saat menghapus gambar dari storage
+                                        Toast.makeText(activity, "Gagal menghapus gambar", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -99,6 +119,9 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
                         });
             }
         });
+
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),android.R.anim.slide_in_left);
+        holder.itemView.startAnimation(animation);
 
         holder.bteditt.setOnClickListener(v -> {
             Intent editForm = new Intent(activity, EditKendaraan.class);
@@ -173,5 +196,12 @@ public class AdapterKendaraan  extends RecyclerView.Adapter<AdapterKendaraan.MyV
 
             activity.startActivity(intent);
             }
+
+
         }
+
+    public void filterList(List<ModelKendaraan> filteredList) {
+        mList = filteredList;
+        notifyDataSetChanged();
+    }
     }

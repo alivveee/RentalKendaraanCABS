@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cabs.HomepageActivity;
 import com.example.cabs.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,6 +38,7 @@ public class TemukanPenyewa extends AppCompatActivity implements SearchView.OnQu
     ArrayList<ModelPenyewa> listPenyewa;
     RecyclerView rvPenyewa;
     FirebaseUser user;
+    LinearLayout btBack;
 
     SearchView search;
 
@@ -49,9 +53,16 @@ public class TemukanPenyewa extends AppCompatActivity implements SearchView.OnQu
         user = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance().getReference();
 
+
         tambah_penyewa = findViewById(R.id.bt_tambah_penyewa);
         search = findViewById(R.id.search);
+        btBack = findViewById(R.id.back_temukan_penyewa);
 
+
+        btBack.setOnClickListener(view -> {
+            startActivity(new Intent(this, HomepageActivity.class));
+            finish();
+        });
 
         tambah_penyewa.setOnClickListener(new View.OnClickListener() {
             @Override

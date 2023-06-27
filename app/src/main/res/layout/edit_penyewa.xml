@@ -56,6 +56,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/back_edit_penyewa"
                     android:layout_margin="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -87,6 +88,8 @@ public class EditPenyewaa extends AppCompatActivity {
 
     CardView bt_upload;
 
+    LinearLayout btBack;
+
 
     private static final int RC_Take_Photo = 0;
     private static final int RC_Take_From_Gallery = 1;
@@ -119,6 +122,12 @@ public class EditPenyewaa extends AppCompatActivity {
         NamaKendaraan = findViewById(R.id.tv_merk_kendaraan);
         bt_upload = findViewById(R.id.card_upload_image);
         Total = findViewById(R.id.tv_total);
+        btBack = findViewById(R.id.back_edit_penyewa);
+
+        btBack.setOnClickListener(view -> {
+            startActivity(new Intent(this, TemukanPenyewa.class));
+            finish();
+        });
 
         fetchDataFromFirebase(); // Panggil method untuk mengambil data dari Firebase
 
@@ -200,7 +209,7 @@ public class EditPenyewaa extends AppCompatActivity {
                         }
                     });
                 }else {
-                    Toast.makeText(EditPenyewaa.this, "No Image Selected", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
@@ -623,7 +632,7 @@ public class EditPenyewaa extends AppCompatActivity {
         Log.d("MyApp", "harga kendaraan: " + hargaKendaraan);
         Log.d("MyApp", "selectedTanggal: " + selectedTanggal);
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("MMM d – MMM d");
+            SimpleDateFormat sdf = new SimpleDateFormat("d MMM – d MMM");
             Log.d("MyApp", "totalHarga: " + 0);
 
 
@@ -633,7 +642,7 @@ public class EditPenyewaa extends AppCompatActivity {
             Log.d("MyApp", "endDate: " + endDateStr);
 
             // Mem-parse tanggal tunggal tanpa bulan
-            SimpleDateFormat sdfDateOnly = new SimpleDateFormat("MMM d");
+            SimpleDateFormat sdfDateOnly = new SimpleDateFormat("d MMM");
             Date startDate = sdfDateOnly.parse(startDateStr);
             Date endDate = sdfDateOnly.parse(endDateStr);
 

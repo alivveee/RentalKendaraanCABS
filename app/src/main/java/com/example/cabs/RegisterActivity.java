@@ -9,11 +9,13 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cabs.CariKendaraan.TemukanKendaraan;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -34,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText editText_email,editText_password,editText_nama;
 
     TextInputLayout il_password,il_nama,il_email;
+    ImageView btBack;
     Button bt_continue;
     FirebaseAuth firebaseauth = FirebaseAuth.getInstance();
 
@@ -49,6 +52,12 @@ public class RegisterActivity extends AppCompatActivity {
         il_password = findViewById(R.id.il_passwordSignUp);
         il_email = findViewById(R.id.il_emailSignUp);
         il_nama = findViewById(R.id.il_namaSignUp);
+        btBack = findViewById(R.id.back_sign_up);
+
+        btBack.setOnClickListener(view -> {
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        });
 
         bt_continue.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,6 +17,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.FileProvider;
 
 import com.bumptech.glide.Glide;
+import com.example.cabs.HomepageActivity;
 import com.example.cabs.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -59,6 +61,8 @@ public class EditKendaraan extends AppCompatActivity {
     String currentPhotoPath, urlGambar, key;
     Integer UPLOAD_CODE = 99;
 
+    LinearLayout btBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +77,7 @@ public class EditKendaraan extends AppCompatActivity {
         btsave = findViewById(R.id.bt_edt_submit);
         btUpload = findViewById(R.id.imgbt);
         uploadImage = findViewById(R.id.upload_imgg);
+        btBack = findViewById(R.id.back_edit_kendaraan);
 
 
         String[] jenisMesinOptions = {"Matic", "Manual"};
@@ -102,6 +107,11 @@ public class EditKendaraan extends AppCompatActivity {
         edtjumlahPenumpang.setText(jumlahpenumpang);
         edtjumlahKendaraan.setText(jumlahkendaraan);
         edtdeskripsiKendaraan.setText(deskripsi);
+
+        btBack.setOnClickListener(view -> {
+            startActivity(new Intent(this, TemukanKendaraan.class));
+            finish();
+        });
 
 
         btUpload.setOnClickListener(view -> {

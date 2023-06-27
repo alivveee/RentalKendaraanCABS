@@ -22,9 +22,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.cabs.HomepageActivity;
 import com.example.cabs.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -58,6 +60,8 @@ public class TambahKendaraan extends AppCompatActivity {
     String currentPhotoPath, urlGambar, key;
     Integer UPLOAD_CODE = 0;
 
+    LinearLayout btBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +76,7 @@ public class TambahKendaraan extends AppCompatActivity {
         btTambah = findViewById(R.id.bt_submit);
         btUpload = findViewById(R.id.card_upload_image);
         uploadImage = findViewById(R.id.upload_imgg);
+        btBack = findViewById(R.id.back_tambah_kendaraan);
 
 
         String[] jenisMesinOptions = {"Matic", "Manual"};
@@ -94,6 +99,11 @@ public class TambahKendaraan extends AppCompatActivity {
                 selectImage(TambahKendaraan.this);
 
             }
+        });
+
+        btBack.setOnClickListener(view -> {
+            startActivity(new Intent(this, TemukanKendaraan.class));
+            finish();
         });
 
         btTambah.setOnClickListener(view -> {

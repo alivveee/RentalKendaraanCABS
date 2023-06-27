@@ -20,19 +20,30 @@
     </ImageView>
 
 
-    <ImageButton
-        android:id="@+id/btNext"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
-        android:background="@drawable/nextbtn"
-        app:layout_constraintBottom_toTopOf="@+id/onBoardingDuaCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.0">
 
-    </ImageButton>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        >
+        <ImageButton
+            android:id="@+id/btNext"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:background="@drawable/nextbtn"
+            android:layout_gravity="right"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="50dp"
+
+            >
+
+        </ImageButton>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/onBoardingDuaCard"
@@ -58,7 +69,7 @@
         app:layout_constraintVertical_bias="0.815">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -77,6 +88,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -90,7 +102,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView1"
             app:layout_constraintVertical_bias="0.2">
 
         </TextView>

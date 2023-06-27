@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -106,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
     }
     private void reload(){
         FirebaseUser currentUser = firebaseauth.getCurrentUser();
-        StyleableToast.makeText(MainActivity.this, "Welcome "+ currentUser.getDisplayName(), R.style.mytoast).show();
         startActivity(new Intent(this, HomepageActivity.class));
     }
 }

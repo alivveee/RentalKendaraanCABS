@@ -69,14 +69,31 @@
                 app:layout_constraintBottom_toBottomOf="@+id/header" />
 
         </LinearLayout>
-        <ImageView
-            android:id="@+id/bt_backedt"
-            android:layout_width="53dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="20dp"
-            android:background="@drawable/back"
-            android:backgroundTint="@color/kuning"
-            android:layout_marginTop="25dp"/>
+        <LinearLayout
+            android:id="@+id/back_temukan_kendaraan"
+            android:layout_margin="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/icon_back"
+                android:contentDescription="Back Icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textColor="@color/kuning"
+                android:textSize="16dp">
+
+            </TextView>
+
+
+        </LinearLayout>
         <TextView
             android:id="@+id/temukan"
             android:layout_width="150dp"

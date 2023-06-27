@@ -1,6 +1,7 @@
 package com.example.cabs.CariPenyewa;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +36,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.example.cabs.CariKendaraan.EditKendaraan;
 import com.example.cabs.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,6 +59,10 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
     private List<ModelPenyewa> mListFull;
     Context mContext;
     private Activity activity;
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    StorageReference storage = FirebaseStorage.getInstance().getReference();
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -106,7 +114,6 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
 
                 dialog_name.setText(mList.get(vHolder.getAdapterPosition()).getNama());
                 dialog_phone_number.setText(mList.get(vHolder.getAdapterPosition()).getNo_hp());
-                Toast.makeText(mContext, "Test Click : " + String.valueOf(vHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
 //                Picasso.get()
 //                        .load(imageUrl)
 //                        .into(dialog_image);
@@ -127,7 +134,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
 
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterPenyewa.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AdapterPenyewa.MyViewHolder holder,@SuppressLint("RecyclerView") int position) {
         final ModelPenyewa data = mList.get(position);
         holder.tvNama.setText(data.getNama());
         holder.tvTanggal.setText(data.getTanggal());
@@ -164,7 +171,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
                 intent.setData(Uri.parse("tel:"+phoneNumber));
                 if (ActivityCompat.checkSelfPermission(mContext,
                         Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions((Activity) activity, new String[]{Manifest.permission.CALL_PHONE}, 1);
+                    ActivityCompat.requestPermissions((Activity) mContext, new String[]{Manifest.permission.CALL_PHONE}, 1);
                     return;
                 }
                 mContext.startActivity(intent);
@@ -175,8 +182,8 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
             @Override
             public void onClick(View view) {
                 String getPhoneNumber = data.getNo_hp();
-                String phoneNumber = "+" + getPhoneNumber;
-                String message = "Halo, Kami Dari Cabs";
+                String phoneNumber = "62" + getPhoneNumber;
+                String message = "Halo " + data.getNama() + ",Kami Dari Cabs";
                 String url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + message;
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -184,6 +191,50 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
                 mContext.startActivity(intent);
             }
         });
+
+        holder.bt_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Hapus item dari database menggunakan referensi
+                database.child(user.getUid()).child("Penyewa").child(data.getKey()).removeValue()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // Item berhasil dihapus dari database
+                                Toast.makeText(mContext, "Item dihapus", Toast.LENGTH_SHORT).show();
+
+                                mList.remove(position);
+                                notifyDataSetChanged();
+
+                                // hapus gambar dari storage
+                                StorageReference fileRef = storage.child(user.getUid()).child("penyewa").child(data.getKey());
+                                Log.d("hapus", "onSuccess: " + data.getKey());
+                                fileRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        // Gambar berhasil dihapus dari storage
+                                        Toast.makeText(mContext, "Gambar dihapus", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Terjadi kesalahan saat menghapus gambar dari storage
+                                        Toast.makeText(mContext, "Gagal menghapus gambar", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Terjadi kesalahan saat menghapus item dari database
+                                Toast.makeText(mContext, "Gagal menghapus item", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+
+
 
 
     }
@@ -196,7 +247,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvNama, tvTanggal,tvNamaKendaraan,tvTotal, Total;
         TextInputEditText Tanggal, Nama, Alamat, No_HP;
-        ImageView bt_edit;
+        ImageView bt_edit,bt_delete;
         CardView cardItemKendaraan, bt_upload;
         LinearLayout item;
         Button bt_dialog_call,bt_dialog_wa, Save;
@@ -221,6 +272,7 @@ public class AdapterPenyewa extends RecyclerView.Adapter<AdapterPenyewa.MyViewHo
             bt_upload = itemView.findViewById(R.id.card_upload_image);
             Total = itemView.findViewById(R.id.tv_total);
             bt_edit = itemView.findViewById(R.id.click);
+            bt_delete = itemView.findViewById(R.id.delete);
             itemView.setOnClickListener(this);
 
 

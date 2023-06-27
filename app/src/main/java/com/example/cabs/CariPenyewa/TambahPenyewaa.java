@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,9 @@ import androidx.core.util.Pair;
 import com.bumptech.glide.Glide;
 
 import android.Manifest;
+
+import com.example.cabs.CariKendaraan.TambahKendaraan;
+import com.example.cabs.HomepageActivity;
 import com.example.cabs.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -84,17 +88,22 @@ public class TambahPenyewaa extends AppCompatActivity {
     CardView bt_upload;
     String key;
 
+    LinearLayout btBack;
+
     private static final int RC_Take_Photo = 0;
     private static final int RC_Take_From_Gallery = 1;
     private static final int RC_SIGN_IN = 999;
     String currentPhotoPath;
     private StorageReference mStorageRef;
     String urlGambar;
+    Integer UPLOAD_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tambah_penyewa);
+
+        btBack = findViewById(R.id.back_tambah_penyewa);
 
         database = FirebaseDatabase.getInstance().getReference();
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -147,6 +156,11 @@ public class TambahPenyewaa extends AppCompatActivity {
                     Toast.makeText(TambahPenyewaa.this, "No Image Selected", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
+
+        btBack.setOnClickListener(view -> {
+            startActivity(new Intent(this, TemukanPenyewa.class));
+            finish();
         });
 
         bt_upload.setOnClickListener(new View.OnClickListener() {
@@ -250,22 +264,26 @@ public class TambahPenyewaa extends AppCompatActivity {
 
 
                 ModelPenyewa model = new ModelPenyewa(sNama, sNohp, sAlamat, sNamaKendaraan, sTanggal,sTotal,urlGambar);
-                database.child(user.getUid()).child("Penyewa").child(key).setValue(model)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(TambahPenyewaa.this, "Data Saved", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(TambahPenyewaa.this, TemukanPenyewa.class));
-                                finish();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(TambahPenyewaa.this, "Failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-
+                if (key == null) {
+                    Toast.makeText(TambahPenyewaa.this, "Harap upload gambar", Toast.LENGTH_SHORT).show();
+                } else if (UPLOAD_CODE == 0) {
+                    Toast.makeText(TambahPenyewaa.this, "Harap tunggu gambar terupload", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    database.child(user.getUid()).child("Penyewa").child(key).setValue(model)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(TambahPenyewaa.this, "Data Saved", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(TambahPenyewaa.this, "Failed", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
             }
         });
     }
@@ -405,6 +423,7 @@ public class TambahPenyewaa extends AppCompatActivity {
                 Toast.makeText(TambahPenyewaa.this,
                         "can't upload Image, " + exception.getMessage(),
                         Toast.LENGTH_LONG).show();
+                UPLOAD_CODE = 0;
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -421,6 +440,7 @@ public class TambahPenyewaa extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         // Mendapatkan URL unduhan gambar
                         urlGambar = uri.toString();
+                        UPLOAD_CODE = 99;
 
                     }
                 });
@@ -566,7 +586,7 @@ public class TambahPenyewaa extends AppCompatActivity {
         Log.d("MyApp", "harga kendaraan: " + hargaKendaraan);
         Log.d("MyApp", "selectedTanggal: " + selectedTanggal);
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("MMM d – MMM d");
+            SimpleDateFormat sdf = new SimpleDateFormat("d MMM – d MMM");
             Log.d("MyApp", "totalHarga: " + 0);
 
 
@@ -576,7 +596,7 @@ public class TambahPenyewaa extends AppCompatActivity {
             Log.d("MyApp", "endDate: " + endDateStr);
 
             // Mem-parse tanggal tunggal tanpa bulan
-            SimpleDateFormat sdfDateOnly = new SimpleDateFormat("MMM d");
+            SimpleDateFormat sdfDateOnly = new SimpleDateFormat("d MMM");
             Date startDate = sdfDateOnly.parse(startDateStr);
             Date endDate = sdfDateOnly.parse(endDateStr);
 
